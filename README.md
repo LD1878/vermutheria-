@@ -66,19 +66,33 @@ Dynamic content (products, blog) stores both `_es` and `_en` versions inside the
 
 ---
 
-## Deploy to GitHub Pages (under 2 minutes)
+## Deploy to GitHub Pages — DONE ✅
 
-1. Create a new repository (or use this folder)
-2. Add / commit only `index.html` (and this README)
-3. Go to **Settings → Pages**
-4. Source: **Deploy from a branch** → `main` / `root`
-5. Save. Your site will be live at `https://<user>.github.io/<repo>`
+The full site has been pushed to this repository:
 
-**Tip:** Add a custom domain in the same settings panel if desired.
+**Repo:** https://github.com/LD1878/vermutheria-
 
-Alternative hosts:
-- Netlify Drop (drag the file)
-- Vercel (import the repo)
+**Live site will be at:** https://ld1878.github.io/vermutheria-/
+
+### Enable GitHub Pages (one-time, ~30 seconds):
+
+1. Go to the repo: https://github.com/LD1878/vermutheria-
+2. Click **Settings** → **Pages** (in the left sidebar)
+3. Under "Build and deployment":
+   - **Source**: Deploy from a branch
+   - **Branch**: `main`
+   - **Folder**: `/ (root)`
+4. Click **Save**
+
+GitHub will build and publish the site. It usually becomes available in 30–90 seconds at:
+
+→ **https://ld1878.github.io/vermutheria-/**
+
+You can also add a custom domain in the same Pages settings page.
+
+---
+
+The site is 100% static and ready. No further build steps needed.
 
 ---
 
