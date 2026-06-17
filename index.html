@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vermuthia • Vermutería de Autor | Cerrado de Calderón, Málaga</title>
+  <meta name="description" content="Vermuthia. Una vermutería boutique de autor en el Cerrado de Calderón, Málaga. Vermuts artesanales excepcionales, conservas premium y tapas de autor en un espacio elegante y atemporal.">
+  <meta name="keywords" content="vermut artesanal Málaga, vermutería Cerrado de Calderón, vermut premium, conservas gourmet Málaga, cata de vermut, maridaje vermut conservas, vermut de autor Andalucía">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Vermuthia • Vermutería de Autor">
+  <meta property="og:description" content="El arte del vermut renace en el Cerrado de Calderón. Vermuts artesanales, conservas selectas y una experiencia única en Málaga.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1200&q=80">
+  <meta property="og:url" content="https://vermutia.es">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vermuthia • Vermutería de Autor">
+  <meta name="twitter:description" content="El arte del vermut renace en el Cerrado de Calderón.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1200&q=80">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    :root {
+      --bg-cream: #F8F5EF;
+      --green-deep: #1E2F23;
+      --green-leaf: #3D5C3A;
+      --gold: #C5A46E;
+      --gold-dark: #A88A55;
+      --text-primary: #2C3C2E;
+      --text-secondary: #5C6B5A;
+    }
+
+    body {
+      font-family: 'Inter', system_ui, -apple-system, sans-serif;
+      background-color: #F8F5EF;
+      color: #2C3C2E;
+    }
+
+    .font-serif {
+      font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    }
+
+    .heading-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-feature-settings: "tnum";
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -2px;
+      left: 0;
+      background-color: #C5A46E;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover:after {
+      width: 100%;
+    }
+
+    .gold-button {
+      background-color: #C5A46E;
+      color: #1E2F23;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 0.5px;
+    }
+    .gold-button:hover {
+      background-color: #A88A55;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    }
+
+    .outline-button {
+      border: 1px solid #C5A46E;
+      color: #1E2F23;
+      transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+    .outline-button:hover {
+      background-color: #C5A46E;
+      color: #1E2F23;
+      border-color: #C5A46E;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+    }
+
+    @media (min-width: 768px) {
+      .section-title {
+        font-size: 2.75rem;
+      }
+    }
+
+    .luxury-card {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                  box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                  border-color 0.2s ease;
+      background: #fff;
+      border: 1px solid rgba(198, 164, 110, 0.15);
+    }
+    .luxury-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+      border-color: #C5A46E;
+    }
+
+    .product-image {
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .luxury-card:hover .product-image {
+      transform: scale(1.06);
+    }
+
+    .filter-tab {
+      position: relative;
+      padding-bottom: 6px;
+      color: #5C6B5A;
+      transition: all 0.2s ease;
+      letter-spacing: 0.5px;
+    }
+    .filter-tab.active {
+      color: #1E2F23;
+      font-weight: 500;
+    }
+    .filter-tab.active:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      background: linear-gradient(to right, #C5A46E, #A88A55);
+    }
+
+    .modal {
+      animation: modalEnter 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    @keyframes modalEnter {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .elegant-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #C5A46E, transparent);
+      opacity: 0.35;
+    }
+
+    .premium-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .wine-glass {
+      filter: drop-shadow(0 10px 15px rgb(0 0 0 / 0.1));
+    }
+
+    .nav-scrolled {
+      background-color: rgba(248, 245, 239, 0.96);
+      backdrop-filter: blur(20px);
+    }
+
+    .logo-svg {
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover .logo-svg {
+      transform: scale(1.01);
+    }
+
+    .masonry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 160px;
+      gap: 12px;
+    }
+    @media (min-width: 768px) {
+      .masonry-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 180px;
+      }
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 14px;
+      position: relative;
+    }
+    .gallery-item:nth-child(3n) {
+      grid-row: span 2;
+    }
+    .gallery-item:nth-child(5n) {
+      grid-column: span 2;
+    }
+    .gallery-item img {
+      transition: transform 0.8s cubic-bezier(0.23, 1.0, 0.32, 1);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .vermouth-modal-image {
+      background-size: cover;
+      background-position: center;
+    }
+
+    .stat {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .footer-link {
+      transition: color .2s ease;
+    }
+    .footer-link:hover {
+      color: #C5A46E;
+    }
+
+    .menu-drawer {
+      transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    .price-tag {
+      font-feature-settings: "tnum";
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="nav" class="fixed top-0 left-0 right-0 z-50 bg-[#F8F5EF]/95 border-b border-[#C5A46E]/15 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center group" aria-label="Vermuthia - Inicio">
+        <div id="nav-logo" class="h-9"></div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-x-10 text-sm tracking-[0.5px]">
+        <a href="#" class="nav-link text-[#1E2F23] font-medium" data-i18n="nav.inicio">Inicio</a>
+        <a href="#historia" class="nav-link text-[#1E2F23] font-medium" data-i18n="nav.historia">Nuestra Historia</a>
+        <a href="#vermuts" class="nav-link text-[#1E2F23] font-medium" data-i18n="nav.vermuts">Los Vermuts</a>
+        <a href="#carta" class="nav-link text-[#1E2F23] font-medium" data-i18n="nav.carta">La Carta</a>
+        <a href="#experiencia" class="nav-link text-[#1E2F23] font-medium" data-i18n="nav.experiencia">La Experiencia</a>
+      </div>
+
+      <!-- Right side actions -->
+      <div class="hidden md:flex items-center gap-x-3">
+        <!-- Language Switcher -->
+        <div class="flex items-center rounded-full border border-[#C5A46E]/30 bg-white/60 p-1 text-xs tracking-widest">
+          <button onclick="setLanguage('es')" id="lang-es"
+            class="px-3.5 py-1.5 rounded-full transition-all font-medium active-lang">ES</button>
+          <button onclick="setLanguage('en')" id="lang-en"
+            class="px-3.5 py-1.5 rounded-full transition-all font-medium text-[#5C6B5A]">EN</button>
+        </div>
+
+        <!-- Reserve Button -->
+        <button onclick="openBookingModal()"
+          class="gold-button text-xs tracking-[1.25px] px-7 py-[13px] rounded-full font-medium shadow-sm">
+          <span data-i18n="nav.reservar">RESERVAR EXPERIENCIA</span>
+        </button>
+      </div>
+
+      <!-- Mobile -->
+      <div class="flex md:hidden items-center gap-x-3">
+        <!-- Mobile language -->
+        <div class="flex items-center rounded-full border border-[#C5A46E]/30 bg-white/70 p-0.5 text-[10px] tracking-widest">
+          <button onclick="setLanguage('es')" id="lang-es-mobile"
+            class="px-3 py-1 rounded-full transition-all font-medium active-lang">ES</button>
+          <button onclick="setLanguage('en')" id="lang-en-mobile"
+            class="px-3 py-1 rounded-full transition-all font-medium text-[#5C6B5A]">EN</button>
+        </div>
+        
+        <button onclick="openMobileMenu()" class="p-2 text-[#1E2F23]" aria-label="Abrir menú">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <header class="relative min-h-[100dvh] flex items-center justify-center pt-20 overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0 bg-cover bg-center" 
+         style="background-image: url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=2000&q=85')">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/50"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(#F8F5EF_0.6px,transparent_1px)] bg-[length:4px_4px] opacity-[0.035]"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl px-6 text-center">
+      <!-- Large Logo in Hero -->
+      <div class="flex justify-center mb-5">
+        <div id="hero-logo" class="w-[210px] md:w-[260px]"></div>
+      </div>
+
+      <h1 class="text-[#F8F5EF] text-5xl md:text-7xl tracking-tighter leading-none font-semibold mb-4 heading-serif">
+        Vermuthia
+      </h1>
+      
+      <p class="text-[#F8F5EF] text-xl md:text-2xl tracking-[-0.2px] mb-9 max-w-[620px] mx-auto font-light" data-i18n="hero.tagline">
+        El arte del vermut renace en el Cerrado de Calderón
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <button onclick="document.getElementById('carta').scrollIntoView({ behavior: 'smooth' })" 
+          class="outline-button text-sm tracking-[1.25px] px-9 py-[15px] rounded-full font-medium bg-white/95 hover:bg-white">
+          <span data-i18n="hero.explore">EXPLORAR LA CARTA</span>
+        </button>
+        <button onclick="openBookingModal()" 
+          class="gold-button text-sm tracking-[1.25px] px-9 py-[15px] rounded-full font-medium">
+          <span data-i18n="hero.reserve">RESERVAR CATA PRIVADA</span>
+        </button>
+      </div>
+
+      <div class="absolute bottom-9 left-1/2 -translate-x-1/2 hidden md:block">
+        <div class="flex flex-col items-center text-[#F8F5EF]/70 text-xs tracking-[2px]">
+          <span data-i18n="hero.scroll">DESCUBRE MÁS</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 mt-1.5 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== NUESTRA HISTORIA ==================== -->
+  <section id="historia" class="max-w-6xl mx-auto px-6 pt-20 pb-24">
+    <div class="grid md:grid-cols-2 gap-x-16 gap-y-12 items-center">
+      <!-- Text -->
+      <div class="reveal">
+        <div class="uppercase text-[#C5A46E] text-xs tracking-[3px] mb-3" data-i18n="historia.eyebrow">CERRADO DE CALDERÓN · MÁLAGA</div>
+        <h2 class="section-title heading-serif text-[#1E2F23] mb-8" data-i18n="historia.title">Nuestra Historia</h2>
+        
+        <div class="space-y-6 premium-text text-[#2C3C2E]">
+          <p data-i18n="historia.p1">
+            En las laderas soleadas del Cerrado de Calderón, donde el Mediterráneo respira entre pinos y la tierra roja guarda el calor del día, nace Vermuthia.
+          </p>
+          <p data-i18n="historia.p2">
+            Un proyecto que honra la tradición milenaria del vermut con una mirada contemporánea. Elaboramos pequeñas partidas con botánicos de fincas cercanas y especias excepcionales. Nuestro método combina la paciencia de los métodos antiguos con la precisión de una bodega moderna.
+          </p>
+          <p data-i18n="historia.p3">
+            Vermuthia es mucho más que un vermut: es un refugio para quienes entienden que el mejor aperitivo es también un acto de presencia y belleza.
+          </p>
+        </div>
+        
+        <div class="mt-9 flex items-center gap-x-8 text-sm">
+          <div>
+            <div class="font-medium text-[#1E2F23] stat">2023</div>
+            <div class="text-xs tracking-wide text-[#5C6B5A]" data-i18n="historia.founded">AÑO DE FUNDACIÓN</div>
+          </div>
+          <div>
+            <div class="font-medium text-[#1E2F23] stat">7</div>
+            <div class="text-xs tracking-wide text-[#5C6B5A]" data-i18n="historia.varietals">VERMUTS DE AUTOR</div>
+          </div>
+          <div>
+            <div class="font-medium text-[#1E2F23] stat">1</div>
+            <div class="text-xs tracking-wide text-[#5C6B5A]" data-i18n="historia.estate">FINCA PROPIA</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="reveal">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80" 
+               alt="Vista de las colinas del Cerrado de Calderón al atardecer, viñedos y olivos" 
+               class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LOS VERMUTS ==================== -->
+  <section id="vermuts" class="bg-white py-20 border-y border-[#C5A46E]/10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col items-center text-center mb-12">
+        <div class="uppercase tracking-[3.5px] text-xs text-[#C5A46E] mb-2" data-i18n="vermuts.eyebrow">DE LA TIERRA AL VASO</div>
+        <h2 class="section-title heading-serif text-[#1E2F23]" data-i18n="vermuts.title">Los Vermuts de Vermuthia</h2>
+        <p class="mt-3 text-[#5C6B5A] max-w-md" data-i18n="vermuts.subtitle">Pequeñas producciones. Historias largas.</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex justify-center gap-x-2 md:gap-x-3 mb-10 flex-wrap gap-y-2">
+        <button onclick="filterVermouths('todos')" class="filter-tab active px-7 py-1.5 text-sm tracking-wider" id="filter-todos" data-i18n="vermuts.filter.all">TODOS</button>
+        <button onclick="filterVermouths('rojo')" class="filter-tab px-7 py-1.5 text-sm tracking-wider" id="filter-rojo" data-i18n="vermuts.filter.red">ROJO</button>
+        <button onclick="filterVermouths('blanco')" class="filter-tab px-7 py-1.5 text-sm tracking-wider" id="filter-blanco" data-i18n="vermuts.filter.white">BLANCO</button>
+        <button onclick="filterVermouths('especial')" class="filter-tab px-7 py-1.5 text-sm tracking-wider" id="filter-especial" data-i18n="vermuts.filter.special">ESPECIALES</button>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="vermouth-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LA CARTA ==================== -->
+  <section id="carta" class="max-w-7xl mx-auto px-6 pt-20 pb-24">
+    <div class="text-center mb-14">
+      <div class="uppercase text-[#C5A46E] tracking-[3px] text-xs mb-2" data-i18n="carta.eyebrow">SABORES DEL SUR</div>
+      <h2 class="section-title heading-serif text-[#1E2F23]" data-i18n="carta.title">La Carta</h2>
+      <p class="text-[#5C6B5A] mt-3" data-i18n="carta.subtitle">Conservas de autor y tablas de degustación pensadas para acompañar a nuestros vermuts.</p>
+    </div>
+
+    <!-- Tablas de Degustación -->
+    <div class="mb-16">
+      <div class="flex items-baseline justify-between mb-6 px-1">
+        <h3 class="text-xl tracking-tight font-medium text-[#1E2F23]" data-i18n="carta.tablas">Tablas de Degustación</h3>
+        <div class="text-xs uppercase tracking-widest text-[#C5A46E]" data-i18n="carta.for2">para compartir</div>
+      </div>
+      
+      <div id="tablas-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Conservas Selectas -->
+    <div>
+      <div class="flex items-baseline justify-between mb-6 px-1">
+        <h3 class="text-xl tracking-tight font-medium text-[#1E2F23]" data-i18n="carta.conservas">Conservas Selectas</h3>
+      </div>
+      
+      <div id="conservas-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LA EXPERIENCIA ==================== -->
+  <section id="experiencia" class="bg-[#1E2F23] text-[#F8F5EF] py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-12 gap-y-12 gap-x-14">
+        <!-- Left text -->
+        <div class="lg:col-span-5">
+          <div class="uppercase tracking-[3px] text-xs text-[#C5A46E] mb-3" data-i18n="experiencia.eyebrow">EL LUGAR</div>
+          <h2 class="section-title heading-serif text-white mb-7" data-i18n="experiencia.title">La Experiencia Vermuthia</h2>
+          
+          <div class="space-y-6 text-[#D8D2C4] text-[15px] leading-relaxed">
+            <p data-i18n="experiencia.p1">
+              Una antigua finca del siglo pasado restaurada con delicadeza. Muros de piedra caliza, vigas de madera antigua y una terraza elevada que abraza el atardecer sobre Málaga.
+            </p>
+            <p data-i18n="experiencia.p2">
+              Aquí el vermut se sirve con tiempo. Nuestras catas guiadas y menús de autor revelan el diálogo entre cada vermut y las conservas que lo acompañan.
+            </p>
+          </div>
+
+          <button onclick="openBookingModal()" 
+            class="mt-8 outline-button border-[#C5A46E] text-[#F8F5EF] hover:bg-[#C5A46E] hover:text-[#1E2F23] px-8 py-3 text-xs tracking-[1.5px] rounded-full">
+            <span data-i18n="experiencia.cta">RESERVAR MI VISITA</span>
+          </button>
+        </div>
+
+        <!-- Gallery -->
+        <div class="lg:col-span-7">
+          <div id="gallery-grid" class="masonry-grid">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="mt-20 pt-12 border-t border-white/10">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="testimonials-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="mt-20 pt-9 border-t border-white/10 grid md:grid-cols-2 gap-9 text-sm">
+        <div>
+          <div class="text-[#C5A46E] tracking-[1px] text-xs mb-2" data-i18n="experiencia.location">CERRADO DE CALDERÓN, MÁLAGA</div>
+          <div class="text-lg leading-tight text-white font-light heading-serif" data-i18n="experiencia.address">Camino de los Montes 47<br>29018 Málaga, España</div>
+          
+          <div class="mt-5 space-y-1 text-[#D8D2C4]">
+            <div>hola@vermutia.es</div>
+            <div>+34 952 12 47 89</div>
+          </div>
+        </div>
+        
+        <div>
+          <div class="text-[#C5A46E] tracking-[1px] text-xs mb-3" data-i18n="experiencia.hours">HORARIO</div>
+          <div class="text-[#D8D2C4] space-y-1">
+            <div data-i18n="experiencia.hours.weekdays">Miércoles a viernes: 18:00 — 23:30</div>
+            <div data-i18n="experiencia.hours.weekend">Sábados: 12:30 — 00:00</div>
+            <div data-i18n="experiencia.hours.closed">Domingos y lunes: cerrado (reservas privadas)</div>
+          </div>
+          
+          <a href="https://maps.google.com/?q=Camino+de+los+Montes+47%2C+29018+M%C3%A1laga" target="_blank" 
+             class="inline-flex items-center gap-2 mt-7 text-[#C5A46E] hover:text-[#F8F5EF] text-sm tracking-wider">
+            <span data-i18n="experiencia.map">CÓMO LLEGAR</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7V3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BLOG ==================== -->
+  <section id="blog" class="max-w-7xl mx-auto px-6 pt-20 pb-24">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-9 gap-y-4">
+      <div>
+        <div class="uppercase text-[#C5A46E] text-xs tracking-[3px]" data-i18n="blog.eyebrow">UNIVERSO VERMUTHIA</div>
+        <h2 class="section-title heading-serif text-[#1E2F23]" data-i18n="blog.title">Historias del Vermut</h2>
+      </div>
+      <p class="text-[#5C6B5A] max-w-sm md:text-right" data-i18n="blog.subtitle">Reflexiones, maridajes y el sur contado con calma.</p>
+    </div>
+
+    <div id="blog-grid" class="grid md:grid-cols-3 gap-6">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-[#1E2F23] text-[#D8D2C4] pt-14 pb-9 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between gap-y-11">
+        <div>
+          <div id="footer-logo" class="h-7 mb-3"></div>
+          <p class="text-sm max-w-[240px]" data-i18n="footer.tagline">Donde el arte del vermut encuentra su expresión más elevada.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-x-14 gap-y-9 text-sm">
+          <div>
+            <div class="text-[#C5A46E] tracking-widest text-xs mb-3" data-i18n="footer.explore">EXPLORAR</div>
+            <div class="space-y-1.5">
+              <a href="#vermuts" class="block footer-link">Los Vermuts</a>
+              <a href="#carta" class="block footer-link">La Carta</a>
+              <a href="#experiencia" class="block footer-link">La Experiencia</a>
+            </div>
+          </div>
+          <div>
+            <div class="text-[#C5A46E] tracking-widest text-xs mb-3" data-i18n="footer.visit">VISITAR</div>
+            <div class="space-y-1.5">
+              <div>Camino de los Montes 47</div>
+              <div>29018 Málaga</div>
+              <a href="https://maps.google.com/?q=Camino+de+los+Montes+47%2C+M%C3%A1laga" target="_blank" class="footer-link block">Ver en mapa →</a>
+            </div>
+          </div>
+          <div>
+            <div class="text-[#C5A46E] tracking-widest text-xs mb-3" data-i18n="footer.contact">CONTACTO</div>
+            <div class="space-y-1.5">
+              <a href="mailto:hola@vermutia.es" class="footer-link block">hola@vermutia.es</a>
+              <div>+34 952 12 47 89</div>
+              <div class="pt-1">Miércoles — Sábado</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="mt-14 pt-9 border-t border-white/10">
+        <div class="max-w-md">
+          <div class="text-xs tracking-[1.5px] text-[#C5A46E] mb-2" data-i18n="footer.newsletter.title">RECIBE NUESTRAS HISTORIAS</div>
+          <div id="newsletter-form">
+            <div class="flex">
+              <input id="newsletter-email" type="email" placeholder="tu@email.com" 
+                     class="flex-1 bg-[#F8F5EF] placeholder-[#A5A18F] text-[#1E2F23] px-5 py-[13px] rounded-l-full text-sm focus:outline-none">
+              <button onclick="submitNewsletter()" 
+                      class="bg-[#C5A46E] hover:bg-[#A88A55] text-[#1E2F23] px-8 rounded-r-full text-sm tracking-widest font-medium transition-colors" data-i18n="footer.newsletter.button">
+                SUSCRIBIRSE
+              </button>
+            </div>
+          </div>
+          <div id="newsletter-success" class="hidden text-[#C5A46E] text-sm mt-3">
+            <span data-i18n="footer.newsletter.success">Gracias. Recibirás nuestras historias y catas especiales en tu correo.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 flex flex-col md:flex-row justify-between gap-y-4 text-xs border-t border-white/10 pt-6 text-[#A5A18F]">
+        <div>© 2026 Vermuthia. Cerrado de Calderón, Málaga.</div>
+        <div class="flex gap-x-5">
+          <a href="#" class="hover:text-[#C5A46E]">Instagram</a>
+          <a href="#" class="hover:text-[#C5A46E]">Pinterest</a>
+          <a href="#" class="hover:text-[#C5A46E]">Newsletter</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== FLOATING MI RESERVA ==================== -->
+  <button onclick="openReservaDrawer()"
+    class="fixed bottom-7 right-6 md:right-8 z-[60] flex items-center gap-3 pl-4 pr-5 py-3 bg-white shadow-xl border border-[#C5A46E]/30 rounded-full hover:border-[#C5A46E] transition-all group">
+    <div class="flex items-center gap-3">
+      <div class="w-5 h-5 text-[#C5A46E]">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </div>
+      <div>
+        <span class="text-xs tracking-[1px] text-[#5C6B5A] group-hover:text-[#1E2F23]" data-i18n="reserva.floating">MI RESERVA</span>
+        <span id="reserva-count" class="ml-1 text-xs font-medium text-[#C5A46E] tabular-nums">(0)</span>
+      </div>
+    </div>
+  </button>
+
+  <!-- ==================== PRODUCT MODAL ==================== -->
+  <div id="product-modal" onclick="if (event.target.id === 'product-modal') closeProductModal()" class="hidden fixed inset-0 z-[70] bg-black/70 flex items-center justify-center p-4 md:p-6">
+    <div onclick="event.stopImmediatePropagation()" class="modal bg-[#F8F5EF] max-w-3xl w-full rounded-3xl overflow-hidden shadow-2xl border border-[#C5A46E]/20">
+      <div class="flex flex-col md:flex-row">
+        <!-- Image -->
+        <div id="modal-image" class="h-72 md:h-auto md:w-5/12 vermouth-modal-image bg-[#1E2F23]"></div>
+        
+        <!-- Content -->
+        <div class="p-9 md:p-10 md:w-7/12 flex flex-col">
+          <div class="flex justify-between items-start">
+            <div>
+              <div id="modal-type-badge" class="inline text-[10px] tracking-[2px] uppercase px-3 py-px rounded-full bg-[#C5A46E]/10 text-[#C5A46E]"></div>
+              <h3 id="modal-name" class="text-[#1E2F23] heading-serif text-3xl mt-2 leading-none"></h3>
+            </div>
+            <button onclick="closeProductModal()" class="text-[#5C6B5A] hover:text-[#1E2F23] p-1">✕</button>
+          </div>
+
+          <div id="modal-prices" class="mt-4 flex items-center gap-x-6 text-sm"></div>
+          
+          <div class="mt-7">
+            <div class="uppercase tracking-widest text-xs text-[#C5A46E]" data-i18n="modal.notes">NOTAS DE CATA</div>
+            <p id="modal-tasting" class="mt-1.5 leading-relaxed text-[#2C3C2E]"></p>
+          </div>
+
+          <div class="mt-6 flex-1">
+            <div class="uppercase tracking-widest text-xs text-[#C5A46E]" data-i18n="modal.description">LA HISTORIA</div>
+            <p id="modal-description" class="mt-1.5 text-[#2C3C2E] leading-relaxed"></p>
+          </div>
+
+          <div class="mt-7">
+            <div class="uppercase tracking-widest text-xs text-[#C5A46E] mb-2" data-i18n="modal.pairings">MARIDAJES SUGERIDOS</div>
+            <div id="modal-pairings" class="flex flex-wrap gap-2"></div>
+          </div>
+
+          <div class="mt-auto pt-8 flex gap-x-3">
+            <button onclick="addCurrentToReserva()" 
+              class="flex-1 gold-button py-[13px] rounded-2xl font-medium text-sm tracking-widest">
+              <span data-i18n="modal.add">AÑADIR A MI RESERVA</span>
+            </button>
+            <button onclick="closeProductModal(); openBookingModal()" 
+              class="flex-1 outline-button py-[13px] rounded-2xl text-sm tracking-widest font-medium">
+              <span data-i18n="modal.book">RESERVAR CATA</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== BOOKING MODAL ==================== -->
+  <div id="booking-modal" onclick="if (event.target.id === 'booking-modal') closeBookingModal()" class="hidden fixed inset-0 z-[80] bg-black/70 flex items-center justify-center p-4">
+    <div onclick="event.stopImmediatePropagation()" class="modal bg-[#F8F5EF] max-w-lg w-full rounded-3xl shadow-2xl border border-[#C5A46E]/20 overflow-hidden">
+      <div class="px-8 pt-8 pb-7">
+        <div class="flex justify-between items-center mb-6">
+          <div>
+            <div class="text-[#C5A46E] text-xs tracking-[2.5px]" data-i18n="booking.eyebrow">VERMUTHIA</div>
+            <h3 class="heading-serif text-3xl text-[#1E2F23]" data-i18n="booking.title">Reservar Experiencia</h3>
+          </div>
+          <button onclick="closeBookingModal()" class="text-[#5C6B5A] hover:text-[#1E2F23] text-xl leading-none">×</button>
+        </div>
+
+        <form id="booking-form" onsubmit="submitBooking(event)">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="sm:col-span-2">
+              <label class="text-xs tracking-widest text-[#5C6B5A]" data-i18n="booking.name">NOMBRE COMPLETO</label>
+              <input type="text" id="booking-name" required class="mt-1 w-full border border-[#C5A46E]/30 bg-white px-4 py-3 rounded-2xl text-sm focus:outline-none focus:border-[#C5A46E]">
+            </div>
+            <div>
+              <label class="text-xs tracking-widest text-[#5C6B5A]" data-i18n="booking.email">EMAIL</label>
+              <input type="email" id="booking-email" required class="mt-1 w-full border border-[#C5A46E]/30 bg-white px-4 py-3 rounded-2xl text-sm focus:outline-none focus:border-[#C5A46E]">
+            </div>
+            <div>
+              <label class="text-xs tracking-widest text-[#5C6B5A]" data-i18n="booking.phone">TELÉFONO</label>
+              <input type="tel" id="booking-phone" class="mt-1 w-full border border-[#C5A46E]/30 bg-white px-4 py-3 rounded-2xl text-sm focus:outline-none focus:border-[#C5A46E]">
+            </div>
+            <div>
+              <label class="text-xs tracking-widest text-[#5C6B5A]" data-i18n="booking.date">FECHA</label>
+              <input type="date" id="booking-date" required class="mt-1 w-full border border-[#C5A46E]/30 bg-white px-4 py-3 rounded-2xl text-sm focus:outline-none focus:border-[#C5A46E]">
+            </div>
+            <div>
+              <label class="text-xs tracking-widest text-[#5C6B5A]" data-i18n="booking.time">HORA</label>
+              <select id="booking-time" required class="mt-1 w-full border border-[#C5A46E]/30 bg-white px-4 py-3 rounded-2xl text-sm focus:outline-none focus:border-[#C5A46E]">
+                <option value="18:00">18:00</option>
+                <option value="18:30">18:30</option>
+                <option value="19:00">19:00</option>
+                <option value="19:30">19:30</option>
+                <option value="20:00">20:00</option>
+                <option value="20:30">20:30</option>
+                <option value="21:00">21:00</option>
+                <option value="21:30">21:30</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-xs tracking-widest text-[#5C6B5A]" data-i18n="booking.guests">INVITADOS</label>
+              <select id="booking-guests" class="mt-1 w-full border border-[#C5A46E]/30 bg-white px-4 py-3 rounded-2xl text-sm focus:outline-none focus:border-[#C5A46E]">
+                <option value="1">1 persona</option>
+                <option value="2" selected>2 personas</option>
+                <option value="3">3 personas</option>
+                <option value="4">4 personas</option>
+                <option value="5">5 personas</option>
+                <option value="6">6 personas</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <label class="text-xs tracking-widest text-[#5C6B5A]" data-i18n="booking.experience">TIPO DE EXPERIENCIA</label>
+            <select id="booking-experience" class="mt-1 w-full border border-[#C5A46E]/30 bg-white px-4 py-3 rounded-2xl text-sm focus:outline-none focus:border-[#C5A46E]">
+              <option value="cata" data-i18n="booking.exp.cata">Cata privada de vermuts</option>
+              <option value="tabla" data-i18n="booking.exp.tabla">Tabla de degustación + vermuts</option>
+              <option value="cena" data-i18n="booking.exp.cena">Velada completa con cena de autor</option>
+              <option value="terrazas" data-i18n="booking.exp.terrazas">Aperitivo en terraza al atardecer</option>
+            </select>
+          </div>
+
+          <div class="mt-4">
+            <label class="text-xs tracking-widest text-[#5C6B5A]" data-i18n="booking.message">NOTAS O PETICIONES ESPECIALES</label>
+            <textarea id="booking-message" rows="3" class="mt-1 w-full resize-y border border-[#C5A46E]/30 bg-white px-4 py-3 rounded-3xl text-sm focus:outline-none focus:border-[#C5A46E]" data-i18n-placeholder="booking.placeholder"></textarea>
+          </div>
+
+          <button type="submit" class="mt-6 w-full gold-button text-sm py-[15px] rounded-2xl font-medium tracking-[1.25px]">
+            <span data-i18n="booking.submit">CONFIRMAR SOLICITUD DE RESERVA</span>
+          </button>
+          
+          <p class="text-center mt-4 text-[10px] tracking-widest text-[#5C6B5A]" data-i18n="booking.note">Te contactaremos en las próximas horas para confirmar disponibilidad.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ARTICLE MODAL ==================== -->
+  <div id="article-modal" onclick="if (event.target.id === 'article-modal') closeArticleModal()" class="hidden fixed inset-0 z-[80] bg-black/75 flex items-start justify-center pt-10 md:pt-16 pb-12 px-4 overflow-y-auto">
+    <div onclick="event.stopImmediatePropagation()" class="modal bg-[#F8F5EF] w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl">
+      <div id="article-hero" class="h-64 md:h-80 bg-cover bg-center relative">
+        <button onclick="closeArticleModal()" class="absolute top-5 right-5 bg-white/90 text-[#1E2F23] px-3 py-1 rounded-full text-xs tracking-widest">CERRAR</button>
+      </div>
+      <div class="px-8 md:px-12 pt-9 pb-14">
+        <div id="article-meta" class="text-xs tracking-[1.5px] text-[#C5A46E]"></div>
+        <h2 id="article-title" class="heading-serif text-[#1E2F23] text-4xl leading-none mt-2 mb-8"></h2>
+        
+        <div id="article-body" class="prose prose-neutral max-w-none text-[#2C3C2E] leading-relaxed text-[15.2px]">
+          <!-- Content populated via JS -->
+        </div>
+        
+        <div class="mt-12 pt-8 border-t border-[#C5A46E]/15 flex justify-between items-center">
+          <button onclick="closeArticleModal()" class="text-sm tracking-widest underline underline-offset-4 text-[#5C6B5A]">← <span data-i18n="article.back">VOLVER A LAS HISTORIAS</span></button>
+          <button onclick="shareArticle()" class="text-xs tracking-[1.25px] text-[#C5A46E] flex items-center gap-2">
+            <span data-i18n="article.share">COMPARTIR HISTORIA</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MI RESERVA DRAWER ==================== -->
+  <div id="reserva-drawer" onclick="if (event.target.id === 'reserva-drawer') closeReservaDrawer()" class="hidden fixed inset-0 z-[90] bg-black/60">
+    <div onclick="event.stopImmediatePropagation()" class="absolute right-0 top-0 h-full w-full max-w-md bg-[#F8F5EF] shadow-2xl p-8 flex flex-col">
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="uppercase text-xs tracking-[3px] text-[#C5A46E]">VERMUTHIA</div>
+          <h3 class="heading-serif text-3xl text-[#1E2F23]" data-i18n="reserva.title">Mi Reserva</h3>
+        </div>
+        <button onclick="closeReservaDrawer()" class="text-[#5C6B5A]">✕</button>
+      </div>
+
+      <div id="reserva-list" class="mt-8 flex-1 space-y-4 overflow-auto pr-1 text-sm">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="pt-6 border-t mt-auto">
+        <button onclick="bookFromReserva()" 
+          class="w-full gold-button py-3.5 rounded-2xl tracking-[1.25px] text-sm font-medium">
+          <span data-i18n="reserva.book">RESERVAR ESTA SELECCIÓN</span>
+        </button>
+        <button onclick="clearReserva()" class="w-full mt-3 text-xs tracking-widest py-2 text-[#5C6B5A] hover:text-[#1E2F23]">LIMPIAR SELECCIÓN</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu" onclick="if (event.target.id === 'mobile-menu') closeMobileMenu()" class="hidden fixed inset-0 z-[95] bg-black/60 md:hidden">
+    <div onclick="event.stopImmediatePropagation()" class="menu-drawer absolute top-0 right-0 h-full w-4/5 max-w-xs bg-[#F8F5EF] shadow-2xl px-7 py-8 flex flex-col">
+      <div class="flex justify-between mb-8">
+        <div id="mobile-logo" class="h-6"></div>
+        <button onclick="closeMobileMenu()" class="text-xl">×</button>
+      </div>
+      
+      <div class="flex flex-col gap-y-4 text-[17px]">
+        <a href="#" onclick="closeMobileMenu()" class="py-1" data-i18n="nav.inicio">Inicio</a>
+        <a href="#historia" onclick="closeMobileMenu()" class="py-1" data-i18n="nav.historia">Nuestra Historia</a>
+        <a href="#vermuts" onclick="closeMobileMenu()" class="py-1" data-i18n="nav.vermuts">Los Vermuts</a>
+        <a href="#carta" onclick="closeMobileMenu()" class="py-1" data-i18n="nav.carta">La Carta</a>
+        <a href="#experiencia" onclick="closeMobileMenu()" class="py-1" data-i18n="nav.experiencia">La Experiencia</a>
+      </div>
+      
+      <div class="mt-auto">
+        <button onclick="closeMobileMenu(); openBookingModal()" class="gold-button w-full py-3.5 rounded-2xl text-sm tracking-[1.5px]">
+          <span data-i18n="nav.reservar">RESERVAR EXPERIENCIA</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // =============================================
+    // EDIT THIS SECTION TO UPDATE MENU / PRICES / BLOG
+    // =============================================
+    const vermouths = [
+      {
+        id: "rojo-clasico",
+        type: "rojo",
+        name_es: "Vermut Rojo Clásico",
+        name_en: "Classic Red Vermouth",
+        short_es: "Canela, clavo, corteza de naranja amarga y un toque de cacao. Cuerpo aterciopelado con final largo y especiado.",
+        short_en: "Cinnamon, clove, bitter orange peel and a hint of cocoa. Velvety body with a long, spicy finish.",
+        glass: 14,
+        bottle: 72,
+        full_es: "Nuestro vermut rojo insignia. Elaborado con más de 22 botánicos, envejecido brevemente en barrica de roble francés. Una expresión clásica pero con la profundidad y elegancia que define Vermuthia.",
+        full_en: "Our signature red vermouth. Made with more than 22 botanicals and briefly aged in French oak. A classic expression with the depth and elegance that defines Vermuthia.",
+        pairings_es: ["Anchoas de Santoña", "Jamón ibérico", "Queso curado de oveja"],
+        pairings_en: ["Santoña anchovies", "Ibérico ham", "Aged sheep cheese"],
+        image: "https://images.unsplash.com/photo-1547595628-c61a29f495f0?w=900&q=80"
+      },
+      {
+        id: "reserva-roble",
+        type: "rojo",
+        name_es: "Reserva de Roble",
+        name_en: "Oak Reserve Vermouth",
+        short_es: "Notas profundas de madera tostada, vainilla, higo seco y cacao negro. Sedoso y complejo.",
+        short_en: "Deep notes of toasted wood, vanilla, dried fig and dark cocoa. Silky and complex.",
+        glass: 16,
+        bottle: 85,
+        full_es: "Un vermut rojo de guarda. Envejecido durante 14 meses en barricas de roble. Ideal para quien busca la elegancia del vermut maduro con cuerpo y elegancia de un gran vino generoso.",
+        full_en: "A vermouth for aging. Matured for 14 months in oak barrels. Perfect for those seeking the elegance of a mature vermouth with the body and refinement of a fine fortified wine.",
+        pairings_es: ["Tabla de quesos curados", "Foie de pato", "Chocolate negro 85%"],
+        pairings_en: ["Aged cheese board", "Duck foie", "85% dark chocolate"],
+        image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=900&q=80"
+      },
+      {
+        id: "especial-naranja",
+        type: "especial",
+        name_es: "Edición de Naranja",
+        name_en: "Orange Edition",
+        short_es: "Naranja amarga de Sevilla, mandarina y corteza de limón. Fresco pero profundo, con un final cítrico brillante.",
+        short_en: "Bitter Seville orange, mandarin and lemon zest. Fresh yet profound, with a bright citrus finish.",
+        glass: 15,
+        bottle: 78,
+        full_es: "Nuestra interpretación del vermut de naranja clásico andaluz. Elaborado con naranjas amargas de temporada de la Axarquía. Un vermut vibrante y luminoso que brilla en cócteles y solo.",
+        full_en: "Our interpretation of the classic Andalusian orange vermouth. Crafted with seasonal bitter oranges from the Axarquía. A vibrant, luminous vermouth that shines both in cocktails and neat.",
+        pairings_es: ["Boquerones en vinagre", "Aceitunas arbequinas", "Gambas al ajillo"],
+        pairings_en: ["Boquerones in vinegar", "Arbequina olives", "Garlic shrimp"],
+        image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=900&q=80"
+      },
+      {
+        id: "blanco-hierbas",
+        type: "blanco",
+        name_es: "Blanco de Hierbas",
+        name_en: "Herbal White Vermouth",
+        short_es: "Tomillo, romero, hinojo y verbena. Luminoso, seco y aromático. Un vermut blanco para el Mediterráneo.",
+        short_en: "Thyme, rosemary, fennel and verbena. Luminous, dry and aromatic. A white vermouth for the Mediterranean.",
+        glass: 13,
+        bottle: 68,
+        full_es: "Elaborado con hierbas silvestres recogidas en las laderas cercanas. Un blanco seco y perfumado, pensado para acompañar conservas del mar y aperitivos ligeros.",
+        full_en: "Crafted with wild herbs foraged from nearby hills. A dry and perfumed white, designed to accompany seafood conserves and light appetizers.",
+        pairings_es: ["Anchoas del Cantábrico", "Mejillones en escabeche", "Pimientos del piquillo"],
+        pairings_en: ["Cantabrian anchovies", "Mussels in escabeche", "Piquillo peppers"],
+        image: "https://images.unsplash.com/photo-1547595628-c61a29f495f0?w=900&q=80"
+      },
+      {
+        id: "blanco-floral",
+        type: "blanco",
+        name_es: "Blanco Floral",
+        name_en: "Floral White Vermouth",
+        short_es: "Manzanilla, manzanilla dulce, flor de azahar y un sutil toque de rosa. Elegante y delicado.",
+        short_en: "Chamomile, sweet chamomile, orange blossom and a subtle rose note. Elegant and delicate.",
+        glass: 14,
+        bottle: 74,
+        full_es: "Un homenaje al sur más perfumado. Este blanco se distingue por su delicadeza y complejidad floral. Perfecto como aperitivo antes de la cena o con mariscos.",
+        full_en: "An homage to the perfumed south. This white stands out for its delicacy and floral complexity. Perfect as a pre-dinner aperitif or with shellfish.",
+        pairings_es: ["Ostras", "Vieiras", "Queso fresco de cabra con miel"],
+        pairings_en: ["Oysters", "Scallops", "Fresh goat cheese with honey"],
+        image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=900&q=80"
+      },
+      {
+        id: "azafra-miel",
+        type: "especial",
+        name_es: "Azafrán y Miel",
+        name_en: "Saffron & Honey Vermouth",
+        short_es: "Azafrán de La Mancha, miel de romero y un fondo de almendra amarga. Dorado, cálido y exótico.",
+        short_en: "La Mancha saffron, rosemary honey and a bitter almond base. Golden, warm and exotic.",
+        glass: 18,
+        bottle: 92,
+        full_es: "Nuestra creación más especial. Solo se producen 600 botellas al año. El azafrán aporta una complejidad dorada y la miel suaviza el carácter botánico. Un vermut de culto.",
+        full_en: "Our most special creation. Only 600 bottles produced per year. Saffron adds golden complexity and honey softens the botanical profile. A cult vermouth.",
+        pairings_es: ["Foie con membrillo", "Queso azul", "Frutos secos tostados"],
+        pairings_en: ["Foie with quince", "Blue cheese", "Toasted nuts"],
+        image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=900&q=80"
+      },
+      {
+        id: "rojo-rosado",
+        type: "rojo",
+        name_es: "Rosado de Granada",
+        name_en: "Granada Rosé Vermouth",
+        short_es: "Granada, frambuesa, cardamomo y canela de Ceilán. Fresco, afrutado y especiado.",
+        short_en: "Pomegranate, raspberry, cardamom and Ceylon cinnamon. Fresh, fruity and spicy.",
+        glass: 15,
+        bottle: 76,
+        full_es: "Un vermut rosado único. La acidez de la granada equilibra la dulzura natural y las especias le dan carácter. Una sorpresa elegante para quienes buscan algo distinto.",
+        full_en: "A unique rosé vermouth. The acidity of pomegranate balances the natural sweetness while the spices give it character. An elegant surprise for those seeking something different.",
+        pairings_es: ["Salmon ahumado", "Tataki de atún", "Fresas con pimienta"],
+        pairings_en: ["Smoked salmon", "Tuna tataki", "Strawberries with pepper"],
+        image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=900&q=80"
+      }
+    ]
+
+    const tablas = [
+      {
+        id: "tabla-clasica",
+        name_es: "Tabla Clásica Vermuthia",
+        name_en: "Vermuthia Classic Board",
+        desc_es: "Selección de cinco conservas de la casa: anchoas, aceitunas arbequinas, bonito, queso curado y jamón ibérico de bellota.",
+        desc_en: "Selection of five house conserves: anchovies, arbequina olives, bonito, aged cheese and acorn-fed ibérico ham.",
+        price: 38,
+        serves: "2 personas",
+        image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80"
+      },
+      {
+        id: "tabla-mar",
+        name_es: "Tabla del Mar",
+        name_en: "Table of the Sea",
+        desc_es: "Anchoas de Santoña, mejillones en escabeche, boquerones, navajas y pimientos del piquillo. El mar en su máxima expresión.",
+        desc_en: "Santoña anchovies, mussels in escabeche, boquerones, razor clams and piquillo peppers. The sea at its finest.",
+        price: 46,
+        serves: "2 personas",
+        image: "https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=900&q=80"
+      },
+      {
+        id: "tabla-montana",
+        name_es: "Tabla de la Montaña",
+        name_en: "Mountain Board",
+        desc_es: "Jamón ibérico 5J, lomo de bellota, queso de oveja viejo, membrillo artesanal y nueces tostadas. Potente y generoso.",
+        desc_en: "5J ibérico ham, acorn-fed loin, aged sheep cheese, artisanal quince paste and toasted walnuts. Powerful and generous.",
+        price: 52,
+        serves: "2 personas",
+        image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&q=80"
+      },
+      {
+        id: "tabla-vegetal",
+        name_es: "Tabla de la Huerta",
+        name_en: "Garden Board",
+        desc_es: "Selección vegetariana: aceitunas aliñadas, pimientos asados, berenjena en escabeche, tomates secos y queso fresco de cabra.",
+        desc_en: "Vegetarian selection: marinated olives, roasted peppers, pickled eggplant, sun-dried tomatoes and fresh goat cheese.",
+        price: 34,
+        serves: "2 personas",
+        image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&q=80"
+      }
+    ]
+
+    const conservas = [
+      {
+        id: "anchoas",
+        name_es: "Anchoas de Santoña en AOVE",
+        name_en: "Santoña Anchovies in EVOO",
+        desc_es: "Anchoas del Cantábrico de primavera, en aceite de oliva virgen extra. Suave, carnosa y con el punto exacto de sal.",
+        desc_en: "Spring Cantabrian anchovies in extra virgin olive oil. Tender, meaty and perfectly seasoned.",
+        origin: "Santoña, Cantabria",
+        price: 16
+      },
+      {
+        id: "aceitunas",
+        name_es: "Aceitunas Arbequinas de Finca",
+        name_en: "Estate Arbequina Olives",
+        desc_es: "Aceitunas Arbequinas de nuestra finca, aliñadas con tomillo fresco, piel de limón y un toque de ajo.",
+        desc_en: "Arbequina olives from our estate, dressed with fresh thyme, lemon zest and a touch of garlic.",
+        origin: "Cerrado de Calderón",
+        price: 9
+      },
+      {
+        id: "bonito",
+        name_es: "Bonito del Norte en Escabeche",
+        name_en: "Northern Bonito in Escabeche",
+        desc_es: "Lomos de bonito del norte cocinados en un escabeche suave de vinagre de Jerez y especias.",
+        desc_en: "Northern bonito loins cooked in a delicate Jerez vinegar and spice escabeche.",
+        origin: "Getaria, País Vasco",
+        price: 14
+      },
+      {
+        id: "queso",
+        name_es: "Queso Curado de Oveja",
+        name_en: "Aged Sheep Cheese",
+        desc_es: "Queso de oveja manchega curado 18 meses. Textura firme, notas a nuez y un final largo.",
+        desc_en: "18-month Manchego-style sheep cheese. Firm texture, nutty notes and a long finish.",
+        origin: "La Mancha",
+        price: 12
+      },
+      {
+        id: "jamon",
+        name_es: "Jamón Ibérico de Bellota 5J",
+        name_en: "5J Acorn-fed Ibérico Ham",
+        desc_es: "Ración generosa de jamón ibérico de bellota. Pata negra, corte a cuchillo.",
+        desc_en: "Generous portion of acorn-fed ibérico ham. Black hoof, knife-cut.",
+        origin: "Extremadura",
+        price: 28
+      },
+      {
+        id: "boquerones",
+        name_es: "Boquerones en Vinagre",
+        name_en: "White Anchovies in Vinegar",
+        desc_es: "Boquerones frescos marinados en vinagre suave de manzana y perejil. Limpios y frescos.",
+        desc_en: "Fresh anchovies marinated in mild apple vinegar and parsley. Clean and fresh.",
+        origin: "Málaga",
+        price: 11
+      },
+      {
+        id: "pimientos",
+        name_es: "Pimientos del Piquillo Rellenos",
+        name_en: "Stuffed Piquillo Peppers",
+        desc_es: "Pimientos del piquillo asados y rellenos de merluza y gambas. Una conserva de autor.",
+        desc_en: "Roasted piquillo peppers stuffed with hake and shrimp. An author conserve.",
+        origin: "Navarra",
+        price: 13
+      }
+    ]
+
+    const blogPosts = [
+      {
+        id: "renacer",
+        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&q=80",
+        date_es: "12 de junio de 2026",
+        date_en: "June 12, 2026",
+        title_es: "El renacer del vermut artesanal en Andalucía",
+        title_en: "The Renaissance of Artisanal Vermouth in Andalusia",
+        excerpt_es: "Por qué el sur está recuperando su lugar en la cultura del aperitivo y qué hace único al vermut malagueño.",
+        excerpt_en: "Why the south is reclaiming its place in aperitif culture and what makes Málaga vermouth unique.",
+        content_es: `<p>Durante décadas, el vermut fue en España sinónimo de algo industrial y de baja calidad. Pero en los últimos años ha nacido una generación de productores que está devolviendo al vermut su dignidad.</p>
+<p>En Málaga, el Cerrado de Calderón ofrece algo que pocas regiones tienen: un microclima suave, una luz generosa y una tradición de conservas que se remonta a los fenicios. Aquí el vermut no se bebe de pie en la barra. Se sirve sentado, con tiempo y con un plato de conservas que lo honra.</p>
+<p>En Vermuthia creemos que el vermut tiene que contar una historia del lugar. Cada uno de nuestros vermuts lleva botánicos recolectados a pocos kilómetros. No hay nada más local ni más elegante que eso.</p>`,
+        content_en: `<p>For decades, vermouth in Spain was synonymous with something industrial and of low quality. But in recent years a new generation of producers has begun restoring vermouth to its rightful dignity.</p>
+<p>In Málaga, Cerrado de Calderón offers something few regions possess: a mild microclimate, generous light, and a tradition of conserves that dates back to the Phoenicians. Here, vermouth is not drunk standing at the bar. It is served seated, with time and with a plate of conserves that honors it.</p>
+<p>At Vermuthia we believe vermouth must tell the story of the place. Each of our vermouths carries botanicals gathered within a few kilometers. There is nothing more local, and nothing more elegant, than that.</p>`
+      },
+      {
+        id: "maridajes",
+        image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1000&q=80",
+        date_es: "3 de junio de 2026",
+        date_en: "June 3, 2026",
+        title_es: "Maridajes inolvidables: conservas premium y vermut de autor",
+        title_en: "Unforgettable Pairings: Premium Conserves and Author Vermouth",
+        excerpt_es: "Cinco combinaciones que transforman un aperitivo en un momento memorable.",
+        excerpt_en: "Five combinations that transform an aperitif into a memorable experience.",
+        content_es: `<p>El maridaje perfecto no es el que anula al otro, sino el que lo eleva. Aquí nuestras combinaciones favoritas:</p>
+<ul class="list-disc pl-5 space-y-1 mt-4">
+<li><strong>Vermut Blanco de Hierbas + Anchoas de Santoña</strong> — La frescura herbácea contrasta con la salinidad pura del mar.</li>
+<li><strong>Reserva de Roble + Jamón ibérico</strong> — La madera y la grasa se abrazan de forma sublime.</li>
+<li><strong>Edición de Naranja + Boquerones</strong> — El cítrico realza la acidez y limpia el paladar.</li>
+<li><strong>Azafrán y Miel + Queso azul</strong> — Dulzor, sal y especias crean una explosión de sabor.</li>
+<li><strong>Rosado de Granada + Salmón ahumado</strong> — La fruta roja y la suavidad del pescado se encuentran en un punto exquisito.</li>
+</ul>
+<p class="mt-4">La regla más importante: probar siempre primero el vermut solo, luego con la conserva. El orden importa.</p>`,
+        content_en: `<p>The perfect pairing does not cancel one another out, but elevates both. These are our favorite combinations:</p>
+<ul class="list-disc pl-5 space-y-1 mt-4">
+<li><strong>Herbal White Vermouth + Santoña Anchovies</strong> — Herbal freshness contrasts with pure marine salinity.</li>
+<li><strong>Oak Reserve + Ibérico Ham</strong> — Wood and fat embrace in a sublime way.</li>
+<li><strong>Orange Edition + Boquerones</strong> — Citrus lifts the acidity and cleanses the palate.</li>
+<li><strong>Saffron &amp; Honey + Blue Cheese</strong> — Sweetness, salt and spice create an explosion of flavor.</li>
+<li><strong>Granada Rosé + Smoked Salmon</strong> — Red fruit and the softness of fish meet at an exquisite point.</li>
+</ul>
+<p class="mt-4">The most important rule: always taste the vermouth first on its own, then with the conserve. Order matters.</p>`
+      },
+      {
+        id: "terroir",
+        image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1000&q=80",
+        date_es: "24 de mayo de 2026",
+        date_en: "May 24, 2026",
+        title_es: "Cerrado de Calderón: el terroir secreto del sur",
+        title_en: "Cerrado de Calderón: The Secret Terroir of the South",
+        excerpt_es: "La luz, los vientos y los suelos que dan carácter a nuestros vermuts y conservas.",
+        excerpt_en: "The light, winds and soils that give character to our vermouths and conserves.",
+        content_es: `<p>Cerrado de Calderón es un barrio de Málaga que parece un secreto bien guardado. A solo quince minutos del centro, las casas blancas se mezclan con pinos y olivos en una ladera que baja hacia el mar.</p>
+<p>El suelo es una mezcla de arcilla roja y piedra caliza que retiene el calor del día y lo libera lentamente durante la noche. Esta particularidad da a nuestras hierbas y a las uvas cercanas un carácter único.</p>
+<p>La brisa marina que llega por las tardes refrescando las plantas es otra de las razones por las que nuestros vermuts tienen una acidez tan viva y elegante. Aquí, el tiempo parece detenerse. Y el vermut, por fin, encuentra su verdadero hogar.</p>`,
+        content_en: `<p>Cerrado de Calderón is a Málaga neighborhood that feels like a well-kept secret. Only fifteen minutes from the center, white houses blend with pines and olive trees on a slope that descends toward the sea.</p>
+<p>The soil is a mix of red clay and limestone that stores the day's heat and releases it slowly at night. This particularity gives our herbs and nearby grapes a unique character.</p>
+<p>The sea breeze that arrives in the afternoons, refreshing the plants, is another reason our vermouths have such lively and elegant acidity. Here, time seems to stand still. And vermouth, finally, has found its true home.</p>`
+      }
+    ]
+
+    const testimonials = [
+      {
+        quote_es: "Uno de los lugares más bellos y elegantes donde he tomado vermut. La atención al detalle es extraordinaria.",
+        quote_en: "One of the most beautiful and elegant places I have ever had vermouth. The attention to detail is extraordinary.",
+        author: "Elena R., Madrid"
+      },
+      {
+        quote_es: "El Azafrán y Miel es una obra de arte líquida. Y la terraza al atardecer, inolvidable.",
+        quote_en: "The Saffron & Honey is liquid art. And the terrace at sunset is unforgettable.",
+        author: "Jean-Luc Moreau, París"
+      },
+      {
+        quote_es: "Nunca pensé que una conserva pudiera elevar tanto un vermut. La experiencia es sublime.",
+        quote_en: "I never thought a conserve could elevate vermouth this much. The experience is sublime.",
+        author: "Isabel & Marcos, Sevilla"
+      },
+      {
+        quote_es: "Un refugio de calma y buen gusto. Volveré cada vez que esté en Málaga.",
+        quote_en: "A refuge of calm and good taste. I will return every time I am in Málaga.",
+        author: "Thomas Berg, Estocolmo"
+      }
+    ]
+
+    // =============================================
+    // END EDITABLE CONTENT
+    // =============================================
+
+    let currentLang = 'es'
+    let currentFilter = 'todos'
+    let currentProduct = null
+    let reservas = []
+
+    // Translations for static text (data-i18n)
+    const translations = {
+      es: {
+        'nav.inicio': 'Inicio',
+        'nav.historia': 'Nuestra Historia',
+        'nav.vermuts': 'Los Vermuts',
+        'nav.carta': 'La Carta',
+        'nav.experiencia': 'La Experiencia',
+        'nav.reservar': 'RESERVAR EXPERIENCIA',
+        
+        'hero.tagline': 'El arte del vermut renace en el Cerrado de Calderón',
+        'hero.explore': 'EXPLORAR LA CARTA',
+        'hero.reserve': 'RESERVAR CATA PRIVADA',
+        'hero.scroll': 'DESCUBRE MÁS',
+        
+        'historia.eyebrow': 'CERRADO DE CALDERÓN · MÁLAGA',
+        'historia.title': 'Nuestra Historia',
+        'historia.p1': 'En las laderas soleadas del Cerrado de Calderón, donde el Mediterráneo respira entre pinos y la tierra roja guarda el calor del día, nace Vermuthia.',
+        'historia.p2': 'Un proyecto que honra la tradición milenaria del vermut con una mirada contemporánea. Elaboramos pequeñas partidas con botánicos de fincas cercanas y especias excepcionales. Nuestro método combina la paciencia de los métodos antiguos con la precisión de una bodega moderna.',
+        'historia.p3': 'Vermuthia es mucho más que un vermut: es un refugio para quienes entienden que el mejor aperitivo es también un acto de presencia y belleza.',
+        'historia.founded': 'AÑO DE FUNDACIÓN',
+        'historia.varietals': 'VERMUTS DE AUTOR',
+        'historia.estate': 'FINCA PROPIA',
+        
+        'vermuts.eyebrow': 'DE LA TIERRA AL VASO',
+        'vermuts.title': 'Los Vermuts de Vermuthia',
+        'vermuts.subtitle': 'Pequeñas producciones. Historias largas.',
+        'vermuts.filter.all': 'TODOS',
+        'vermuts.filter.red': 'ROJO',
+        'vermuts.filter.white': 'BLANCO',
+        'vermuts.filter.special': 'ESPECIALES',
+        
+        'carta.eyebrow': 'SABORES DEL SUR',
+        'carta.title': 'La Carta',
+        'carta.subtitle': 'Conservas de autor y tablas de degustación pensadas para acompañar a nuestros vermuts.',
+        'carta.tablas': 'Tablas de Degustación',
+        'carta.for2': 'para compartir',
+        'carta.conservas': 'Conservas Selectas',
+        
+        'experiencia.eyebrow': 'EL LUGAR',
+        'experiencia.title': 'La Experiencia Vermuthia',
+        'experiencia.p1': 'Una antigua finca del siglo pasado restaurada con delicadeza. Muros de piedra caliza, vigas de madera antigua y una terraza elevada que abraza el atardecer sobre Málaga.',
+        'experiencia.p2': 'Aquí el vermut se sirve con tiempo. Nuestras catas guiadas y menús de autor revelan el diálogo entre cada vermut y las conservas que lo acompañan.',
+        'experiencia.cta': 'RESERVAR MI VISITA',
+        'experiencia.location': 'CERRADO DE CALDERÓN, MÁLAGA',
+        'experiencia.address': 'Camino de los Montes 47<br>29018 Málaga, España',
+        'experiencia.hours': 'HORARIO',
+        'experiencia.hours.weekdays': 'Miércoles a viernes: 18:00 — 23:30',
+        'experiencia.hours.weekend': 'Sábados: 12:30 — 00:00',
+        'experiencia.hours.closed': 'Domingos y lunes: cerrado (reservas privadas)',
+        'experiencia.map': 'CÓMO LLEGAR',
+        
+        'blog.eyebrow': 'UNIVERSO VERMUTHIA',
+        'blog.title': 'Historias del Vermut',
+        'blog.subtitle': 'Reflexiones, maridajes y el sur contado con calma.',
+        
+        'footer.tagline': 'Donde el arte del vermut encuentra su expresión más elevada.',
+        'footer.explore': 'EXPLORAR',
+        'footer.visit': 'VISITAR',
+        'footer.contact': 'CONTACTO',
+        'footer.newsletter.title': 'RECIBE NUESTRAS HISTORIAS',
+        'footer.newsletter.button': 'SUSCRIBIRSE',
+        'footer.newsletter.success': 'Gracias. Recibirás nuestras historias y catas especiales en tu correo.',
+        
+        'modal.notes': 'NOTAS DE CATA',
+        'modal.description': 'LA HISTORIA',
+        'modal.pairings': 'MARIDAJES SUGERIDOS',
+        'modal.add': 'AÑADIR A MI RESERVA',
+        'modal.book': 'RESERVAR CATA',
+        
+        'booking.eyebrow': 'VERMUTHIA',
+        'booking.title': 'Reservar Experiencia',
+        'booking.name': 'NOMBRE COMPLETO',
+        'booking.email': 'EMAIL',
+        'booking.phone': 'TELÉFONO',
+        'booking.date': 'FECHA',
+        'booking.time': 'HORA',
+        'booking.guests': 'INVITADOS',
+        'booking.experience': 'TIPO DE EXPERIENCIA',
+        'booking.exp.cata': 'Cata privada de vermuts',
+        'booking.exp.tabla': 'Tabla de degustación + vermuts',
+        'booking.exp.cena': 'Velada completa con cena de autor',
+        'booking.exp.terrazas': 'Aperitivo en terraza al atardecer',
+        'booking.message': 'NOTAS O PETICIONES ESPECIALES',
+        'booking.placeholder': 'Alergias, preferencias...',
+        'booking.submit': 'CONFIRMAR SOLICITUD DE RESERVA',
+        'booking.note': 'Te contactaremos en las próximas horas para confirmar disponibilidad.',
+        
+        'article.back': 'VOLVER A LAS HISTORIAS',
+        'article.share': 'COMPARTIR HISTORIA',
+        
+        'reserva.floating': 'MI RESERVA',
+        'reserva.title': 'Mi Reserva',
+        'reserva.book': 'RESERVAR ESTA SELECCIÓN'
+      },
+      en: {
+        'nav.inicio': 'Home',
+        'nav.historia': 'Our Story',
+        'nav.vermuts': 'Our Vermouths',
+        'nav.carta': 'The Menu',
+        'nav.experiencia': 'The Experience',
+        'nav.reservar': 'BOOK AN EXPERIENCE',
+        
+        'hero.tagline': 'The art of vermouth is reborn in Cerrado de Calderón',
+        'hero.explore': 'EXPLORE THE MENU',
+        'hero.reserve': 'BOOK A PRIVATE TASTING',
+        'hero.scroll': 'DISCOVER MORE',
+        
+        'historia.eyebrow': 'CERRADO DE CALDERÓN · MÁLAGA',
+        'historia.title': 'Our Story',
+        'historia.p1': 'On the sun-drenched slopes of Cerrado de Calderón, where the Mediterranean breathes among pines and the red earth holds the day’s warmth, Vermuthia was born.',
+        'historia.p2': 'A project that honors the ancient tradition of vermouth with a contemporary gaze. We craft small batches using botanicals from nearby estates and exceptional spices. Our method marries the patience of old techniques with the precision of a modern cellar.',
+        'historia.p3': 'Vermuthia is far more than vermouth: it is a refuge for those who understand that the finest aperitif is also an act of presence and beauty.',
+        'historia.founded': 'YEAR FOUNDED',
+        'historia.varietals': 'SIGNATURE VERMOUTHS',
+        'historia.estate': 'ESTATE OWNED',
+        
+        'vermuts.eyebrow': 'FROM THE LAND TO THE GLASS',
+        'vermuts.title': 'The Vermouths of Vermuthia',
+        'vermuts.subtitle': 'Small productions. Long stories.',
+        'vermuts.filter.all': 'ALL',
+        'vermuts.filter.red': 'RED',
+        'vermuts.filter.white': 'WHITE',
+        'vermuts.filter.special': 'SPECIALS',
+        
+        'carta.eyebrow': 'FLAVOURS OF THE SOUTH',
+        'carta.title': 'The Menu',
+        'carta.subtitle': 'Author conserves and tasting boards crafted to accompany our vermouths.',
+        'carta.tablas': 'Tasting Boards',
+        'carta.for2': 'to share',
+        'carta.conservas': 'Select Conserves',
+        
+        'experiencia.eyebrow': 'THE PLACE',
+        'experiencia.title': 'The Vermuthia Experience',
+        'experiencia.p1': 'A restored early 20th-century finca. Limestone walls, ancient wooden beams and an elevated terrace that embraces the sunset over Málaga.',
+        'experiencia.p2': 'Here vermouth is served with time. Our guided tastings and author menus reveal the dialogue between each vermouth and the conserves that accompany it.',
+        'experiencia.cta': 'BOOK MY VISIT',
+        'experiencia.location': 'CERRADO DE CALDERÓN, MÁLAGA',
+        'experiencia.address': 'Camino de los Montes 47<br>29018 Málaga, Spain',
+        'experiencia.hours': 'OPENING HOURS',
+        'experiencia.hours.weekdays': 'Wednesday to Friday: 18:00 — 23:30',
+        'experiencia.hours.weekend': 'Saturdays: 12:30 — 00:00',
+        'experiencia.hours.closed': 'Sundays & Mondays: closed (private bookings only)',
+        'experiencia.map': 'DIRECTIONS',
+        
+        'blog.eyebrow': 'VERMUTHIA UNIVERSE',
+        'blog.title': 'Stories of Vermouth',
+        'blog.subtitle': 'Reflections, pairings and the south told with calm.',
+        
+        'footer.tagline': 'Where the art of vermouth finds its highest expression.',
+        'footer.explore': 'EXPLORE',
+        'footer.visit': 'VISIT',
+        'footer.contact': 'CONTACT',
+        'footer.newsletter.title': 'RECEIVE OUR STORIES',
+        'footer.newsletter.button': 'SUBSCRIBE',
+        'footer.newsletter.success': 'Thank you. You will receive our stories and exclusive tastings in your inbox.',
+        
+        'modal.notes': 'TASTING NOTES',
+        'modal.description': 'THE STORY',
+        'modal.pairings': 'SUGGESTED PAIRINGS',
+        'modal.add': 'ADD TO MY RESERVATION',
+        'modal.book': 'BOOK A TASTING',
+        
+        'booking.eyebrow': 'VERMUTHIA',
+        'booking.title': 'Book an Experience',
+        'booking.name': 'FULL NAME',
+        'booking.email': 'EMAIL',
+        'booking.phone': 'PHONE',
+        'booking.date': 'DATE',
+        'booking.time': 'TIME',
+        'booking.guests': 'GUESTS',
+        'booking.experience': 'EXPERIENCE TYPE',
+        'booking.exp.cata': 'Private vermouth tasting',
+        'booking.exp.tabla': 'Tasting board + vermouths',
+        'booking.exp.cena': 'Full evening with author dinner',
+        'booking.exp.terrazas': 'Sunset aperitif on the terrace',
+        'booking.message': 'NOTES OR SPECIAL REQUESTS',
+        'booking.placeholder': 'Allergies, preferences...',
+        'booking.submit': 'CONFIRM RESERVATION REQUEST',
+        'booking.note': 'We will contact you within a few hours to confirm availability.',
+        
+        'article.back': 'BACK TO STORIES',
+        'article.share': 'SHARE STORY',
+        
+        'reserva.floating': 'MY RESERVATION',
+        'reserva.title': 'My Reservation',
+        'reserva.book': 'BOOK THIS SELECTION'
+      }
+    }
+
+    // Tailwind config
+    function initTailwind() {
+      document.documentElement.style.setProperty('--bg-cream', '#F8F5EF')
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['Playfair Display', 'Georgia', 'serif'],
+              sans: ['Inter', 'system-ui', 'sans-serif']
+            }
+          }
+        }
+      }
+    }
+
+    // Render the SVG logo (highly detailed, elegant)
+    function createLogoSVG(isHero = false) {
+      const size = isHero ? '260' : '148'
+      const viewBox = '0 0 260 142'
+      
+      return `
+        <svg width="${isHero ? '260' : '148'}" height="${isHero ? '142' : '81'}" viewBox="${viewBox}" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+          <!-- Outer decorative circle -->
+          <circle cx="130" cy="69" r="51" stroke="#C5A46E" stroke-width="1.1"/>
+          <circle cx="130" cy="69" r="44.5" stroke="#C5A46E" stroke-width="0.65" opacity="0.6"/>
+          
+          <!-- Symmetrical Vines - Left -->
+          <path d="M84 48 Q62 33 45 47" stroke="#C5A46E" stroke-width="1.9" stroke-linecap="round"/>
+          <path d="M78 52 Q57 39 42 53" stroke="#C5A46E" stroke-width="1.35" stroke-linecap="round"/>
+          <path d="M88 56 Q68 68 51 62" stroke="#C5A46E" stroke-width="1.1" stroke-linecap="round"/>
+          
+          <!-- Symmetrical Vines - Right -->
+          <path d="M176 48 Q198 33 215 47" stroke="#C5A46E" stroke-width="1.9" stroke-linecap="round"/>
+          <path d="M182 52 Q203 39 218 53" stroke="#C5A46E" stroke-width="1.35" stroke-linecap="round"/>
+          <path d="M172 56 Q192 68 209 62" stroke="#C5A46E" stroke-width="1.1" stroke-linecap="round"/>
+          
+          <!-- Leaves Left -->
+          <g fill="#3D5C3A">
+            <path transform="translate(55 39) rotate(-32)" d="M0 0 Q 6.5 -8 0 -17 Q -6.5 -8 0 0"/>
+            <path transform="translate(50 52) rotate(15)" d="M0 0 Q 7 -9 1 -16 Q -5.5 -7 0 0"/>
+            <path transform="translate(67 44) rotate(-48)" d="M0 0 Q 5 -7 0 -13 Q -5 -6 0 0"/>
+          </g>
+          
+          <!-- Leaves Right -->
+          <g fill="#3D5C3A">
+            <path transform="translate(205 39) rotate(32)" d="M0 0 Q 6.5 -8 0 -17 Q -6.5 -8 0 0"/>
+            <path transform="translate(210 52) rotate(-15)" d="M0 0 Q 7 -9 1 -16 Q -5.5 -7 0 0"/>
+            <path transform="translate(193 44) rotate(48)" d="M0 0 Q 5 -7 0 -13 Q -5 -6 0 0"/>
+          </g>
+          
+          <!-- Small grape clusters (left) -->
+          <g fill="#1E2F23">
+            <circle cx="47" cy="46" r="3.1"/>
+            <circle cx="53" cy="48.5" r="2.85"/>
+            <circle cx="50" cy="52.5" r="2.65"/>
+            <circle cx="57" cy="51" r="2.4"/>
+          </g>
+          
+          <!-- Small grape clusters (right) -->
+          <g fill="#1E2F23">
+            <circle cx="213" cy="46" r="3.1"/>
+            <circle cx="207" cy="48.5" r="2.85"/>
+            <circle cx="210" cy="52.5" r="2.65"/>
+            <circle cx="203" cy="51" r="2.4"/>
+          </g>
+          
+          <!-- Elegant "V" -->
+          <text x="130" y="85" text-anchor="middle" fill="#1E2F23" font-family="'Playfair Display', Georgia, serif" font-size="74" font-weight="700" letter-spacing="-3">V</text>
+          
+          <!-- VERMUTERÍA (uppercase sophisticated tracking) -->
+          <text x="130" y="30" text-anchor="middle" fill="#C5A46E" font-family="'Inter', system-ui, sans-serif" font-size="10" font-weight="500" letter-spacing="4.6">VERMUTERÍA</text>
+          
+          <!-- Vermuthia wordmark -->
+          <text x="130" y="116" text-anchor="middle" fill="#1E2F23" font-family="'Playfair Display', Georgia, serif" font-size="15.5" font-weight="500" letter-spacing="0.6">Vermuthia</text>
+        </svg>
+      `
+    }
+
+    function injectLogos() {
+      // Nav logo
+      const navLogo = document.getElementById('nav-logo')
+      navLogo.innerHTML = createLogoSVG(false)
+      
+      // Hero logo
+      const heroLogo = document.getElementById('hero-logo')
+      heroLogo.innerHTML = createLogoSVG(true)
+      
+      // Footer logo
+      const footerLogo = document.getElementById('footer-logo')
+      footerLogo.innerHTML = createLogoSVG(false)
+      
+      // Mobile logo
+      const mobileLogo = document.getElementById('mobile-logo')
+      mobileLogo.innerHTML = createLogoSVG(false)
+    }
+
+    // Render vermouth cards
+    function renderVermouths(filter = 'todos') {
+      const container = document.getElementById('vermouth-grid')
+      container.innerHTML = ''
+      
+      let filtered = vermouths
+      if (filter !== 'todos') {
+        filtered = vermouths.filter(v => v.type === filter)
+      }
+      
+      filtered.forEach(v => {
+        const name = currentLang === 'es' ? v.name_es : v.name_en
+        const short = currentLang === 'es' ? v.short_es : v.short_en
+        
+        const card = document.createElement('div')
+        card.className = `luxury-card group rounded-3xl overflow-hidden cursor-pointer flex flex-col`
+        card.innerHTML = `
+          <div class="h-56 overflow-hidden bg-[#1E2F23]">
+            <img src="${v.image}" alt="${name}" class="product-image w-full h-full object-cover">
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-center justify-between mb-3">
+              <div class="uppercase tracking-[1.5px] text-[10px] text-[#C5A46E] font-medium">${v.type.toUpperCase()}</div>
+              <div class="text-xs text-[#5C6B5A] font-light tabular-nums">COPA ${v.glass}€</div>
+            </div>
+            
+            <h4 class="heading-serif text-2xl leading-none text-[#1E2F23] mb-3">${name}</h4>
+            
+            <p class="text-[#5C6B5A] text-sm leading-snug flex-1">${short}</p>
+            
+            <div class="flex items-center justify-between mt-6 pt-4 border-t border-[#C5A46E]/10 text-sm">
+              <div>
+                <span class="text-[#5C6B5A] text-xs tracking-widest">BOTELLA</span><br>
+                <span class="font-medium text-[#1E2F23] tabular-nums">${v.bottle}€</span>
+              </div>
+              <button onclick="event.stopImmediatePropagation(); openProductModal('${v.id}')" 
+                class="text-xs tracking-widest px-5 py-2 border border-[#C5A46E]/40 hover:bg-[#C5A46E] hover:text-white hover:border-[#C5A46E] rounded-full transition-all">
+                <span>${currentLang === 'es' ? 'VER DETALLES' : 'VIEW DETAILS'}</span>
+              </button>
+            </div>
+          </div>
+        `
+        card.onclick = () => openProductModal(v.id)
+        container.appendChild(card)
+      })
+    }
+
+    function filterVermouths(type) {
+      currentFilter = type
+      
+      // Update active state
+      document.querySelectorAll('[id^="filter-"]').forEach(btn => {
+        btn.classList.remove('active')
+        if (btn.id === `filter-${type}`) btn.classList.add('active')
+      })
+      
+      renderVermouths(type)
+    }
+
+    // Render tablas
+    function renderTablas() {
+      const container = document.getElementById('tablas-grid')
+      container.innerHTML = ''
+      
+      tablas.forEach(t => {
+        const name = currentLang === 'es' ? t.name_es : t.name_en
+        const desc = currentLang === 'es' ? t.desc_es : t.desc_en
+        
+        const card = document.createElement('div')
+        card.className = `luxury-card group rounded-3xl overflow-hidden flex flex-col`
+        card.innerHTML = `
+          <div class="h-40 overflow-hidden">
+            <img src="${t.image}" alt="${name}" class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700">
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex justify-between items-start gap-3">
+              <h4 class="heading-serif text-[21px] leading-none text-[#1E2F23]">${name}</h4>
+              <div class="text-right shrink-0">
+                <div class="text-[#C5A46E] font-medium tabular-nums text-lg">${t.price}€</div>
+                <div class="text-[10px] text-[#5C6B5A] -mt-1">${t.serves}</div>
+              </div>
+            </div>
+            <p class="text-sm mt-5 text-[#5C6B5A] leading-snug flex-1">${desc}</p>
+            
+            <button onclick="addTablaToReserva('${t.id}', event)" 
+              class="mt-5 text-xs self-start tracking-widest px-5 py-[7px] border border-[#C5A46E]/30 hover:border-[#C5A46E] rounded-full transition-all">
+              ${currentLang === 'es' ? 'AÑADIR A RESERVA' : 'ADD TO RESERVATION'}
+            </button>
+          </div>
+        `
+        container.appendChild(card)
+      })
+    }
+
+    // Render conservas
+    function renderConservas() {
+      const container = document.getElementById('conservas-grid')
+      container.innerHTML = ''
+      
+      conservas.forEach(c => {
+        const name = currentLang === 'es' ? c.name_es : c.name_en
+        const desc = currentLang === 'es' ? c.desc_es : c.desc_en
+        
+        const card = document.createElement('div')
+        card.className = `luxury-card rounded-3xl p-6 flex flex-col`
+        card.innerHTML = `
+          <div class="flex justify-between items-baseline">
+            <h4 class="heading-serif text-xl leading-none text-[#1E2F23]">${name}</h4>
+            <div class="text-lg text-[#C5A46E] tabular-nums font-medium shrink-0">${c.price}€</div>
+          </div>
+          <div class="mt-1 text-xs tracking-wider text-[#C5A46E]">${c.origin}</div>
+          <p class="text-sm mt-4 text-[#5C6B5A] leading-relaxed flex-1">${desc}</p>
+          <button onclick="addConservaToReserva('${c.id}', event)" 
+            class="text-xs mt-5 self-start px-5 py-1.5 border border-[#C5A46E]/30 hover:border-[#C5A46E] rounded-full tracking-widest transition-all">
+            ${currentLang === 'es' ? 'AÑADIR A RESERVA' : 'ADD TO RESERVATION'}
+          </button>
+        `
+        container.appendChild(card)
+      })
+    }
+
+    // Render gallery
+    function renderGallery() {
+      const container = document.getElementById('gallery-grid')
+      container.innerHTML = ''
+      
+      const images = [
+        { url: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80', alt: 'Terraza al atardecer' },
+        { url: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=80', alt: 'Interior elegante' },
+        { url: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=900&q=80', alt: 'Copa de vermut' },
+        { url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80', alt: 'Viñedos y paisaje' },
+        { url: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80', alt: 'Tabla de conservas' },
+        { url: 'https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=900&q=80', alt: 'Ambiente nocturno' }
+      ]
+      
+      images.forEach((img, i) => {
+        const div = document.createElement('div')
+        div.className = `gallery-item bg-[#1E2F23] ${i === 2 || i === 4 ? 'md:col-span-2' : ''}`
+        div.innerHTML = `
+          <img src="${img.url}" alt="${img.alt}" class="w-full h-full object-cover">
+        `
+        container.appendChild(div)
+      })
+    }
+
+    // Render testimonials
+    function renderTestimonials() {
+      const container = document.getElementById('testimonials-grid')
+      container.innerHTML = ''
+      
+      testimonials.forEach(t => {
+        const quote = currentLang === 'es' ? t.quote_es : t.quote_en
+        const el = document.createElement('div')
+        el.className = `bg-white/5 rounded-2xl p-6 border border-white/10`
+        el.innerHTML = `
+          <div class="text-[#C5A46E] text-xl leading-none mb-4">“</div>
+          <p class="text-[#F8F5EF] text-[15px] leading-relaxed">${quote}</p>
+          <div class="mt-6 text-xs tracking-widest text-[#C5A46E]">${t.author}</div>
+        `
+        container.appendChild(el)
+      })
+    }
+
+    // Render blog
+    function renderBlog() {
+      const container = document.getElementById('blog-grid')
+      container.innerHTML = ''
+      
+      blogPosts.forEach(post => {
+        const title = currentLang === 'es' ? post.title_es : post.title_en
+        const excerpt = currentLang === 'es' ? post.excerpt_es : post.excerpt_en
+        const date = currentLang === 'es' ? post.date_es : post.date_en
+        
+        const card = document.createElement('div')
+        card.className = `luxury-card rounded-3xl overflow-hidden group cursor-pointer flex flex-col`
+        card.innerHTML = `
+          <div class="h-48 overflow-hidden">
+            <img src="${post.image}" alt="${title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.07]">
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <div class="text-[#C5A46E] tracking-widest text-xs mb-2">${date}</div>
+            <h4 class="heading-serif text-2xl leading-[1.05] text-[#1E2F23] mb-3">${title}</h4>
+            <p class="text-sm text-[#5C6B5A] leading-snug flex-1">${excerpt}</p>
+            <div class="text-[#C5A46E] text-xs tracking-widest mt-5 group-hover:underline">${currentLang === 'es' ? 'LEER HISTORIA →' : 'READ THE STORY →'}</div>
+          </div>
+        `
+        card.onclick = () => openArticleModal(post.id)
+        container.appendChild(card)
+      })
+    }
+
+    // Language handling
+    function setLanguage(lang) {
+      currentLang = lang
+      
+      // Update buttons
+      const esBtn = document.getElementById('lang-es')
+      const enBtn = document.getElementById('lang-en')
+      const esMobile = document.getElementById('lang-es-mobile')
+      const enMobile = document.getElementById('lang-en-mobile')
+      
+      if (lang === 'es') {
+        esBtn.classList.add('active-lang', 'bg-[#C5A46E]', 'text-[#1E2F23]')
+        esBtn.classList.remove('text-[#5C6B5A]')
+        enBtn.classList.remove('active-lang', 'bg-[#C5A46E]', 'text-[#1E2F23]')
+        enBtn.classList.add('text-[#5C6B5A]')
+        
+        esMobile.classList.add('active-lang', 'bg-[#C5A46E]', 'text-[#1E2F23]')
+        esMobile.classList.remove('text-[#5C6B5A]')
+        enMobile.classList.remove('active-lang', 'bg-[#C5A46E]', 'text-[#1E2F23]')
+        enMobile.classList.add('text-[#5C6B5A]')
+      } else {
+        enBtn.classList.add('active-lang', 'bg-[#C5A46E]', 'text-[#1E2F23]')
+        enBtn.classList.remove('text-[#5C6B5A]')
+        esBtn.classList.remove('active-lang', 'bg-[#C5A46E]', 'text-[#1E2F23]')
+        esBtn.classList.add('text-[#5C6B5A]')
+        
+        enMobile.classList.add('active-lang', 'bg-[#C5A46E]', 'text-[#1E2F23]')
+        enMobile.classList.remove('text-[#5C6B5A]')
+        esMobile.classList.remove('active-lang', 'bg-[#C5A46E]', 'text-[#1E2F23]')
+        esMobile.classList.add('text-[#5C6B5A]')
+      }
+      
+      // Update static data-i18n elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n')
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key]
+        }
+      })
+      
+      // Update placeholder
+      const msg = document.getElementById('booking-message')
+      if (msg) {
+        msg.placeholder = translations[lang]['booking.placeholder'] || ''
+      }
+      
+      // Re-render dynamic sections
+      renderVermouths(currentFilter)
+      renderTablas()
+      renderConservas()
+      renderTestimonials()
+      renderBlog()
+      
+      // Update reserva drawer if open
+      if (!document.getElementById('reserva-drawer').classList.contains('hidden')) {
+        renderReservaDrawer()
+      }
+      
+      // Update html lang
+      document.documentElement.lang = lang
+    }
+
+    function updateStaticTexts() {
+      // Called on initial load
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n')
+        if (translations[currentLang] && translations[currentLang][key]) {
+          el.innerHTML = translations[currentLang][key]
+        }
+      })
+    }
+
+    // Product modal
+    let currentProductId = null
+    
+    function openProductModal(id) {
+      const product = vermouths.find(v => v.id === id)
+      if (!product) return
+      
+      currentProductId = id
+      currentProduct = product
+      
+      const modal = document.getElementById('product-modal')
+      const img = document.getElementById('modal-image')
+      const nameEl = document.getElementById('modal-name')
+      const typeBadge = document.getElementById('modal-type-badge')
+      const prices = document.getElementById('modal-prices')
+      const tasting = document.getElementById('modal-tasting')
+      const desc = document.getElementById('modal-description')
+      const pairings = document.getElementById('modal-pairings')
+      
+      img.style.backgroundImage = `url('${product.image}')`
+      
+      const name = currentLang === 'es' ? product.name_es : product.name_en
+      const tastingText = currentLang === 'es' ? product.short_es : product.short_en
+      const descText = currentLang === 'es' ? product.full_es : product.full_en
+      const pairingsArr = currentLang === 'es' ? product.pairings_es : product.pairings_en
+      
+      nameEl.textContent = name
+      typeBadge.textContent = product.type.toUpperCase()
+      
+      prices.innerHTML = `
+        <div>
+          <span class="text-xs tracking-[1px] text-[#5C6B5A]">COPA</span><br>
+          <span class="text-[#1E2F23] font-medium text-2xl tabular-nums">${product.glass}€</span>
+        </div>
+        <div>
+          <span class="text-xs tracking-[1px] text-[#5C6B5A]">BOTELLA</span><br>
+          <span class="text-[#1E2F23] font-medium text-2xl tabular-nums">${product.bottle}€</span>
+        </div>
+      `
+      
+      tasting.textContent = tastingText
+      desc.textContent = descText
+      
+      pairings.innerHTML = pairingsArr.map(p => 
+        `<div class="px-4 py-1.5 rounded-full bg-white border border-[#C5A46E]/20 text-xs tracking-wider text-[#2C3C2E]">${p}</div>`
+      ).join('')
+      
+      modal.classList.remove('hidden')
+      modal.classList.add('flex')
+    }
+    
+    function closeProductModal() {
+      const modal = document.getElementById('product-modal')
+      modal.classList.add('hidden')
+      modal.classList.remove('flex')
+    }
+
+    function addCurrentToReserva() {
+      if (!currentProduct) return
+      addToReserva({
+        type: 'vermouth',
+        id: currentProduct.id,
+        name: currentLang === 'es' ? currentProduct.name_es : currentProduct.name_en,
+        price: currentProduct.glass
+      })
+      closeProductModal()
+    }
+
+    // Add to reserva helpers
+    function addToReserva(item) {
+      // Avoid duplicates
+      const exists = reservas.some(r => r.id === item.id && r.type === item.type)
+      if (!exists) {
+        reservas.push(item)
+        updateReservaCount()
+        
+        // Show toast
+        showToast(currentLang === 'es' ? 'Añadido a tu reserva' : 'Added to your reservation')
+      }
+    }
+    
+    function addTablaToReserva(id, e) {
+      e.stopImmediatePropagation()
+      const tabla = tablas.find(t => t.id === id)
+      if (!tabla) return
+      
+      addToReserva({
+        type: 'tabla',
+        id: tabla.id,
+        name: currentLang === 'es' ? tabla.name_es : tabla.name_en,
+        price: tabla.price
+      })
+    }
+    
+    function addConservaToReserva(id, e) {
+      e.stopImmediatePropagation()
+      const c = conservas.find(x => x.id === id)
+      if (!c) return
+      
+      addToReserva({
+        type: 'conserva',
+        id: c.id,
+        name: currentLang === 'es' ? c.name_es : c.name_en,
+        price: c.price
+      })
+    }
+
+    function updateReservaCount() {
+      const el = document.getElementById('reserva-count')
+      el.textContent = `(${reservas.length})`
+    }
+
+    function showToast(message) {
+      const toast = document.createElement('div')
+      toast.className = `fixed bottom-24 right-6 md:right-9 bg-[#1E2F23] text-[#F8F5EF] text-sm px-6 py-3 rounded-full shadow-2xl flex items-center gap-x-3 z-[100]`
+      toast.innerHTML = `
+        <span>${message}</span>
+      `
+      document.body.appendChild(toast)
+      setTimeout(() => {
+        toast.style.transition = 'all 0.3s'
+        toast.style.opacity = '0'
+        setTimeout(() => toast.remove(), 250)
+      }, 1700)
+    }
+
+    // Reserva drawer
+    function openReservaDrawer() {
+      const drawer = document.getElementById('reserva-drawer')
+      drawer.classList.remove('hidden')
+      drawer.classList.add('flex')
+      renderReservaDrawer()
+    }
+    
+    function closeReservaDrawer() {
+      const drawer = document.getElementById('reserva-drawer')
+      drawer.classList.remove('flex')
+      drawer.classList.add('hidden')
+    }
+    
+    function renderReservaDrawer() {
+      const list = document.getElementById('reserva-list')
+      list.innerHTML = ''
+      
+      if (reservas.length === 0) {
+        list.innerHTML = `<div class="text-[#5C6B5A] text-sm py-7">${currentLang === 'es' ? 'Tu selección está vacía. Explora los vermuts y tablas.' : 'Your selection is empty. Explore our vermouths and boards.'}</div>`
+        return
+      }
+      
+      reservas.forEach((item, idx) => {
+        const row = document.createElement('div')
+        row.className = `flex justify-between items-center border border-[#C5A46E]/20 rounded-2xl px-5 py-[13px]`
+        row.innerHTML = `
+          <div>
+            <div class="text-xs uppercase tracking-[1px] text-[#C5A46E]">${item.type.toUpperCase()}</div>
+            <div class="font-medium text-[#1E2F23]">${item.name}</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="text-[#C5A46E] font-medium tabular-nums">${item.price}€</div>
+            <button onclick="removeFromReserva(${idx})" class="text-[#5C6B5A] hover:text-red-600 p-1">×</button>
+          </div>
+        `
+        list.appendChild(row)
+      })
+      
+      const total = reservas.reduce((sum, r) => sum + (r.price || 0), 0)
+      const totalEl = document.createElement('div')
+      totalEl.className = `pt-3 mt-4 flex justify-between text-sm border-t border-[#C5A46E]/20`
+      totalEl.innerHTML = `
+        <div class="text-[#5C6B5A]">${currentLang === 'es' ? 'TOTAL ESTIMADO' : 'ESTIMATED TOTAL'}</div>
+        <div class="font-medium tabular-nums text-[#1E2F23]">${total}€</div>
+      `
+      list.appendChild(totalEl)
+    }
+    
+    function removeFromReserva(index) {
+      reservas.splice(index, 1)
+      updateReservaCount()
+      renderReservaDrawer()
+    }
+    
+    function clearReserva() {
+      reservas = []
+      updateReservaCount()
+      renderReservaDrawer()
+    }
+    
+    function bookFromReserva() {
+      closeReservaDrawer()
+      setTimeout(() => {
+        openBookingModal(true)
+      }, 380)
+    }
+
+    // Booking modal
+    function openBookingModal(fromReserva = false) {
+      const modal = document.getElementById('booking-modal')
+      modal.classList.remove('hidden')
+      modal.classList.add('flex')
+      
+      // Prefill date to tomorrow
+      const dateInput = document.getElementById('booking-date')
+      const tomorrow = new Date()
+      tomorrow.setDate(tomorrow.getDate() + 1)
+      dateInput.value = tomorrow.toISOString().split('T')[0]
+      
+      if (fromReserva && reservas.length > 0) {
+        const msg = document.getElementById('booking-message')
+        const items = reservas.map(r => r.name).join(' • ')
+        msg.value = (currentLang === 'es' ? 'Incluye en la reserva: ' : 'Include in reservation: ') + items
+      }
+    }
+    
+    function closeBookingModal() {
+      const modal = document.getElementById('booking-modal')
+      modal.classList.remove('flex')
+      modal.classList.add('hidden')
+      document.getElementById('booking-form').reset()
+    }
+    
+    function submitBooking(e) {
+      e.preventDefault()
+      
+      const btns = document.querySelectorAll('#booking-modal button')
+      
+      const formData = {
+        name: document.getElementById('booking-name').value,
+        email: document.getElementById('booking-email').value,
+        date: document.getElementById('booking-date').value,
+        time: document.getElementById('booking-time').value,
+        guests: document.getElementById('booking-guests').value,
+        experience: document.getElementById('booking-experience').value
+      }
+      
+      // Fake success state
+      const modalContent = document.querySelector('#booking-modal > div')
+      modalContent.innerHTML = `
+        <div class="p-12 text-center">
+          <div class="mx-auto w-14 h-14 rounded-full bg-[#C5A46E]/15 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-[#C5A46E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7" />
+            </svg>
+          </div>
+          <h3 class="mt-7 text-[#1E2F23] heading-serif text-3xl">${currentLang === 'es' ? 'Gracias' : 'Thank You'}</h3>
+          <p class="mt-3 text-[#5C6B5A] max-w-[260px] mx-auto leading-relaxed">
+            ${currentLang === 'es' ? 
+              'Hemos recibido tu solicitud. Nos pondremos en contacto contigo muy pronto para confirmar tu reserva.' : 
+              'We have received your request. We will contact you shortly to confirm your reservation.'}
+          </p>
+          <div class="mt-8 text-xs tracking-[1.25px] text-[#C5A46E]">
+            ${formData.date} — ${formData.time} • ${formData.guests} ${currentLang === 'es' ? 'personas' : 'guests'}
+          </div>
+          <button onclick="closeBookingModalAndReset()" class="mt-9 text-xs uppercase tracking-[1.75px] px-8 py-2 border border-[#C5A46E] rounded-full">
+            ${currentLang === 'es' ? 'CERRAR' : 'CLOSE'}
+          </button>
+        </div>
+      `
+    }
+    
+    function closeBookingModalAndReset() {
+      const modal = document.getElementById('booking-modal')
+      modal.classList.remove('flex')
+      modal.classList.add('hidden')
+      
+      // Restore form for next use
+      setTimeout(() => {
+        location.reload() // simple reset for demo purity (or we could re-inject original modal HTML)
+      }, 120)
+    }
+
+    // Article modal
+    let currentArticle = null
+    
+    function openArticleModal(id) {
+      const post = blogPosts.find(p => p.id === id)
+      if (!post) return
+      currentArticle = post
+      
+      const modal = document.getElementById('article-modal')
+      const hero = document.getElementById('article-hero')
+      const title = document.getElementById('article-title')
+      const meta = document.getElementById('article-meta')
+      const body = document.getElementById('article-body')
+      
+      hero.style.backgroundImage = `url('${post.image}')`
+      
+      title.textContent = currentLang === 'es' ? post.title_es : post.title_en
+      meta.textContent = currentLang === 'es' ? post.date_es : post.date_en
+      body.innerHTML = currentLang === 'es' ? post.content_es : post.content_en
+      
+      modal.classList.remove('hidden')
+      modal.classList.add('flex')
+    }
+    
+    function closeArticleModal() {
+      const modal = document.getElementById('article-modal')
+      modal.classList.remove('flex')
+      modal.classList.add('hidden')
+    }
+    
+    function shareArticle() {
+      if (!currentArticle) return
+      const title = currentLang === 'es' ? currentArticle.title_es : currentArticle.title_en
+      const text = currentLang === 'es' ? 'Lee esta historia en Vermuthia' : 'Read this story on Vermuthia'
+      
+      if (navigator.share) {
+        navigator.share({ title, text })
+      } else {
+        navigator.clipboard.writeText(`${title} — https://vermutia.es`)
+        const orig = event.target.textContent
+        event.target.textContent = currentLang === 'es' ? 'ENLACE COPIADO' : 'LINK COPIED'
+        setTimeout(() => {
+          if (event.target) event.target.textContent = orig
+        }, 1600)
+      }
+    }
+
+    // Newsletter
+    function submitNewsletter() {
+      const form = document.getElementById('newsletter-form')
+      const success = document.getElementById('newsletter-success')
+      const email = document.getElementById('newsletter-email').value.trim()
+      
+      if (!email) return
+      
+      form.style.transition = 'opacity .2s'
+      form.style.opacity = '0'
+      setTimeout(() => {
+        form.classList.add('hidden')
+        success.classList.remove('hidden')
+      }, 220)
+    }
+
+    // Mobile menu
+    function openMobileMenu() {
+      document.getElementById('mobile-menu').classList.remove('hidden')
+      document.getElementById('mobile-menu').classList.add('flex')
+    }
+    
+    function closeMobileMenu() {
+      const m = document.getElementById('mobile-menu')
+      m.classList.remove('flex')
+      m.classList.add('hidden')
+    }
+
+    // Scroll animations
+    function initScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
+      
+      document.querySelectorAll('.reveal, section').forEach((el, index) => {
+        if (!el.classList.contains('reveal')) {
+          el.classList.add('reveal')
+        }
+        observer.observe(el)
+      })
+    }
+
+    // Sticky nav effect
+    function initNav() {
+      const nav = document.getElementById('nav')
+      let lastScroll = 0
+      
+      window.addEventListener('scroll', () => {
+        const current = window.scrollY
+        if (current > 70) {
+          nav.classList.add('nav-scrolled', 'shadow-sm')
+        } else {
+          nav.classList.remove('nav-scrolled', 'shadow-sm')
+        }
+        lastScroll = current
+      })
+      
+      // Add active lang style for initial
+      const esBtn = document.getElementById('lang-es')
+      esBtn.classList.add('active-lang', 'bg-[#C5A46E]', 'text-[#1E2F23]')
+    }
+
+    // Keyboard accessibility
+    function initKeyboard() {
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          const modals = ['product-modal', 'booking-modal', 'article-modal', 'reserva-drawer']
+          let closed = false
+          modals.forEach(id => {
+            const el = document.getElementById(id)
+            if (!el.classList.contains('hidden') && !closed) {
+              if (id === 'reserva-drawer') {
+                el.classList.add('hidden')
+                el.classList.remove('flex')
+              } else {
+                el.classList.add('hidden')
+                el.classList.remove('flex')
+              }
+              closed = true
+            }
+          })
+          const mobile = document.getElementById('mobile-menu')
+          if (!mobile.classList.contains('hidden')) {
+            mobile.classList.add('hidden')
+            mobile.classList.remove('flex')
+          }
+        }
+      })
+    }
+
+    // Structured data (LocalBusiness + Offers)
+    function injectStructuredData() {
+      const data = {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Vermuthia",
+        "description": "Vermutería boutique de autor especializada en vermuts artesanales y conservas premium situada en Cerrado de Calderón, Málaga.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Camino de los Montes 47",
+          "addressLocality": "Cerrado de Calderón",
+          "addressRegion": "Málaga",
+          "postalCode": "29018",
+          "addressCountry": "ES"
+        },
+        "telephone": "+34952124789",
+        "url": "https://vermutia.es",
+        "image": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1200&q=80",
+        "servesCuisine": ["Spanish", "Tapas", "Vermouth"],
+        "priceRange": "€€€",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Wednesday", "Thursday", "Friday"],
+            "opens": "18:00",
+            "closes": "23:30"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "12:30",
+            "closes": "00:00"
+          }
+        ]
+      }
+      
+      const script = document.createElement('script')
+      script.type = 'application/ld+json'
+      script.textContent = JSON.stringify(data)
+      document.head.appendChild(script)
+    }
+
+    // Initial render
+    function init() {
+      initTailwind()
+      injectLogos()
+      updateStaticTexts()
+      
+      // Render dynamic sections
+      renderVermouths('todos')
+      renderTablas()
+      renderConservas()
+      renderGallery()
+      renderTestimonials()
+      renderBlog()
+      
+      updateReservaCount()
+      initNav()
+      initScrollAnimations()
+      initKeyboard()
+      injectStructuredData()
+      
+      // Set initial language buttons styles
+      document.getElementById('lang-es').classList.add('bg-[#C5A46E]', 'text-[#1E2F23]')
+      document.getElementById('lang-es-mobile').classList.add('bg-[#C5A46E]', 'text-[#1E2F23]')
+      
+      // Default language ES already set
+      document.documentElement.lang = 'es'
+      
+      // Make nav links smooth
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href')
+          if (href === '#') {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+            e.preventDefault()
+          }
+        })
+      })
+      
+      // Optional: Set a beautiful default date on booking if opened
+      // Prefill done on open
+      
+      // Easter egg: clicking logo scrolls to top
+      const logos = document.querySelectorAll('#nav-logo, #footer-logo')
+      logos.forEach(l => l.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'})))
+      
+      // Accessibility: announce ready
+      console.log('%c[Vermuthia] Luxury single-file site initialized. All content data-driven.', 'color:#C5A46E')
+    }
+
+    // Boot
+    window.onload = init
+    
+    // Expose useful global for power users (editing)
+    window.VERMUTHIA = {
+      getVermouths: () => vermouths,
+      getTablas: () => tablas,
+      getConservas: () => conservas,
+      setLang: (l) => setLanguage(l)
+    }
+  </script>
+</body>
+</html>
