@@ -412,8 +412,8 @@
       <div class="hidden md:flex items-center gap-x-10 text-sm tracking-[0.5px]">
         <a href="#" class="nav-link text-[#1E2F23] font-medium" data-i18n="nav.inicio">Inicio</a>
         <a href="#historia" class="nav-link text-[#1E2F23] font-medium" data-i18n="nav.historia">Nuestra Historia</a>
-        <a href="#vermuts" class="nav-link text-[#1E2F23] font-medium" data-i18n="nav.vermuts">Los Vermuts</a>
         <a href="#carta" class="nav-link text-[#1E2F23] font-medium" data-i18n="nav.carta">La Carta</a>
+        <a href="#vermuts" class="nav-link text-[#1E2F23] font-medium" data-i18n="nav.vermuts">Los Vermuts</a>
         <a href="#experiencia" class="nav-link text-[#1E2F23] font-medium" data-i18n="nav.experiencia">La Experiencia</a>
       </div>
 
@@ -546,30 +546,6 @@
     </div>
   </section>
 
-  <!-- ==================== LOS VERMUTS ==================== -->
-  <section id="vermuts" class="bg-white py-20 border-y border-[#C5A46E]/10">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col items-center text-center mb-12">
-        <div class="uppercase tracking-[3.5px] text-xs text-[#C5A46E] mb-2" data-i18n="vermuts.eyebrow">DE LA TIERRA AL VASO</div>
-        <h2 class="section-title heading-serif text-[#1E2F23]" data-i18n="vermuts.title">Los Vermuts de Vermuthia</h2>
-        <p class="mt-3 text-[#5C6B5A] max-w-md" data-i18n="vermuts.subtitle">Pequeñas producciones. Historias largas.</p>
-      </div>
-
-      <!-- Filters -->
-      <div class="flex justify-center gap-x-1 md:gap-x-3 mb-10 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory md:overflow-visible md:snap-none">
-        <button onclick="filterVermouths('todos')" class="filter-tab active px-5 py-2 text-sm tracking-wider whitespace-nowrap snap-start" id="filter-todos" data-i18n="vermuts.filter.all">TODOS</button>
-        <button onclick="filterVermouths('rojo')" class="filter-tab px-5 py-2 text-sm tracking-wider whitespace-nowrap snap-start" id="filter-rojo" data-i18n="vermuts.filter.red">ROJO</button>
-        <button onclick="filterVermouths('blanco')" class="filter-tab px-5 py-2 text-sm tracking-wider whitespace-nowrap snap-start" id="filter-blanco" data-i18n="vermuts.filter.white">BLANCO</button>
-        <button onclick="filterVermouths('especial')" class="filter-tab px-5 py-2 text-sm tracking-wider whitespace-nowrap snap-start" id="filter-especial" data-i18n="vermuts.filter.special">ESPECIALES</button>
-      </div>
-
-      <!-- Products Grid -->
-      <div id="vermouth-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <!-- Populated by JS -->
-      </div>
-    </div>
-  </section>
-
   <!-- ==================== LA CARTA ==================== -->
   <section id="carta" class="max-w-7xl mx-auto px-5 md:px-6 pt-20 pb-24">
     <div class="text-center mb-14">
@@ -620,6 +596,30 @@
       
       <div id="dulces-grid" class="grid md:grid-cols-2 gap-5 max-w-2xl">
         <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LOS VERMUTS ==================== -->
+  <section id="vermuts" class="bg-white py-20 border-y border-[#C5A46E]/10">
+    <div class="max-w-7xl mx-auto px-5 md:px-6">
+      <div class="flex flex-col items-center text-center mb-12">
+        <div class="uppercase tracking-[3.5px] text-xs text-[#C5A46E] mb-2" data-i18n="vermuts.eyebrow">DE LA TIERRA AL VASO</div>
+        <h2 class="section-title heading-serif text-[#1E2F23]" data-i18n="vermuts.title">Los Vermuts de Vermuthia</h2>
+        <p class="mt-3 text-[#5C6B5A] max-w-md" data-i18n="vermuts.subtitle">Pequeñas producciones. Historias largas.</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex justify-center gap-x-1 md:gap-x-3 mb-10 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory md:overflow-visible md:snap-none">
+        <button onclick="filterVermouths('todos')" class="filter-tab active px-5 py-2 text-sm tracking-wider whitespace-nowrap snap-start" id="filter-todos" data-i18n="vermuts.filter.all">TODOS</button>
+        <button onclick="filterVermouths('rojo')" class="filter-tab px-5 py-2 text-sm tracking-wider whitespace-nowrap snap-start" id="filter-rojo" data-i18n="vermuts.filter.red">ROJO</button>
+        <button onclick="filterVermouths('blanco')" class="filter-tab px-5 py-2 text-sm tracking-wider whitespace-nowrap snap-start" id="filter-blanco" data-i18n="vermuts.filter.white">BLANCO</button>
+        <button onclick="filterVermouths('especial')" class="filter-tab px-5 py-2 text-sm tracking-wider whitespace-nowrap snap-start" id="filter-especial" data-i18n="vermuts.filter.special">ESPECIALES</button>
+      </div>
+
+      <!-- Products List (no photos) -->
+      <div id="vermouth-grid" class="max-w-3xl mx-auto">
+        <!-- Populated by JS as simple list -->
       </div>
     </div>
   </section>
@@ -985,8 +985,8 @@
       <div class="flex flex-col gap-y-1 text-[17px]">
         <a href="#" onclick="closeMobileMenu()" class="py-3 px-1 -mx-1 active:bg-[#C5A46E]/10 rounded-lg" data-i18n="nav.inicio">Inicio</a>
         <a href="#historia" onclick="closeMobileMenu()" class="py-3 px-1 -mx-1 active:bg-[#C5A46E]/10 rounded-lg" data-i18n="nav.historia">Nuestra Historia</a>
-        <a href="#vermuts" onclick="closeMobileMenu()" class="py-3 px-1 -mx-1 active:bg-[#C5A46E]/10 rounded-lg" data-i18n="nav.vermuts">Los Vermuts</a>
         <a href="#carta" onclick="closeMobileMenu()" class="py-3 px-1 -mx-1 active:bg-[#C5A46E]/10 rounded-lg" data-i18n="nav.carta">La Carta</a>
+        <a href="#vermuts" onclick="closeMobileMenu()" class="py-3 px-1 -mx-1 active:bg-[#C5A46E]/10 rounded-lg" data-i18n="nav.vermuts">Los Vermuts</a>
         <a href="#experiencia" onclick="closeMobileMenu()" class="py-3 px-1 -mx-1 active:bg-[#C5A46E]/10 rounded-lg" data-i18n="nav.experiencia">La Experiencia</a>
       </div>
       
@@ -1726,41 +1726,45 @@
         filtered = vermouths.filter(v => v.type === filter)
       }
       
+      const list = document.createElement('div')
+      list.className = `divide-y divide-[#C5A46E]/20 bg-white rounded-3xl border border-[#C5A46E]/15 overflow-hidden`
+      
       filtered.forEach(v => {
         const name = currentLang === 'es' ? v.name_es : v.name_en
         const short = currentLang === 'es' ? v.short_es : v.short_en
         
-        const card = document.createElement('div')
-        card.className = `luxury-card group rounded-3xl overflow-hidden cursor-pointer flex flex-col`
-        card.innerHTML = `
-          <div class="h-56 overflow-hidden bg-[#1E2F23]">
-            <img src="${v.image}" alt="${name}" class="product-image w-full h-full object-cover">
-          </div>
-          <div class="p-6 flex flex-col flex-1">
-            <div class="flex items-center justify-between mb-3">
-              <div class="uppercase tracking-[1.5px] text-[10px] text-[#C5A46E] font-medium">${v.type.toUpperCase()}</div>
-              <div class="text-xs text-[#5C6B5A] font-light tabular-nums">COPA ${v.glass}€</div>
+        const item = document.createElement('div')
+        item.className = `px-6 py-5 cursor-pointer hover:bg-[#F8F5EF] transition-colors group`
+        item.innerHTML = `
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-y-2">
+            <div class="flex-1">
+              <div class="flex items-center gap-x-3 mb-1">
+                <span class="uppercase tracking-[1.5px] text-[10px] text-[#C5A46E] font-medium">${v.type.toUpperCase()}</span>
+                <h4 class="heading-serif text-xl leading-none text-[#1E2F23]">${name}</h4>
+              </div>
+              <p class="text-[#5C6B5A] text-sm leading-snug pr-4">${short}</p>
             </div>
-            
-            <h4 class="heading-serif text-2xl leading-none text-[#1E2F23] mb-3">${name}</h4>
-            
-            <p class="text-[#5C6B5A] text-sm leading-snug flex-1">${short}</p>
-            
-            <div class="flex items-center justify-between mt-6 pt-4 border-t border-[#C5A46E]/10 text-sm">
+            <div class="flex items-center gap-x-6 text-sm sm:text-right shrink-0">
               <div>
-                <span class="text-[#5C6B5A] text-xs tracking-widest">BOTELLA</span><br>
+                <span class="text-[#5C6B5A] text-xs tracking-widest block">COPA</span>
+                <span class="font-medium text-[#1E2F23] tabular-nums">${v.glass}€</span>
+              </div>
+              <div>
+                <span class="text-[#5C6B5A] text-xs tracking-widest block">BOTELLA</span>
                 <span class="font-medium text-[#1E2F23] tabular-nums">${v.bottle}€</span>
               </div>
               <button onclick="event.stopImmediatePropagation(); openProductModal('${v.id}')" 
-                class="text-xs tracking-widest px-5 py-2 border border-[#C5A46E]/40 hover:bg-[#C5A46E] hover:text-white hover:border-[#C5A46E] rounded-full transition-all">
+                class="text-xs tracking-widest px-4 py-1.5 border border-[#C5A46E]/40 hover:bg-[#C5A46E] hover:text-white hover:border-[#C5A46E] rounded-full transition-all whitespace-nowrap">
                 <span>${currentLang === 'es' ? 'VER DETALLES' : 'VIEW DETAILS'}</span>
               </button>
             </div>
           </div>
         `
-        card.onclick = () => openProductModal(v.id)
-        container.appendChild(card)
+        item.onclick = () => openProductModal(v.id)
+        list.appendChild(item)
       })
+      
+      container.appendChild(list)
     }
 
     function filterVermouths(type) {
