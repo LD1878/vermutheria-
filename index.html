@@ -120,6 +120,9 @@
       box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
       border-color: #C5A46E;
     }
+    .luxury-card:active {
+      transform: scale(0.985);
+    }
 
     .product-image {
       transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
@@ -196,9 +199,96 @@
 
     .logo-svg {
       transition: transform 0.3s ease;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    #nav-logo, #footer-logo, #mobile-logo {
+      flex-shrink: 0;
     }
     .nav-link:hover .logo-svg {
       transform: scale(1.01);
+    }
+
+    /* Mobile UX improvements */
+    @media (max-width: 767px) {
+      .section-title {
+        font-size: 1.875rem;
+        line-height: 1.1;
+      }
+
+      .max-w-7xl.mx-auto.px-6,
+      .max-w-7xl.mx-auto.px-5 {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+
+      /* Better touch targets */
+      button, .nav-link, .filter-tab, .gold-button, .outline-button {
+        min-height: 44px;
+      }
+
+      .luxury-card {
+        border-radius: 20px;
+      }
+
+      /* Reduce excessive spacing on mobile */
+      .mb-16 {
+        margin-bottom: 3rem;
+      }
+
+      .pt-20 {
+        padding-top: 4rem;
+      }
+
+      /* Grid adjustments for mobile */
+      #vermouth-grid,
+      #tablas-grid,
+      #tostas-grid,
+      #picoteo-grid {
+        gap: 1rem;
+      }
+
+      /* Slightly shorter image on mobile for vermouth cards */
+      #vermouth-grid .h-56 {
+        height: 10rem;
+      }
+
+      .luxury-card .p-6,
+      .luxury-card .p-5 {
+        padding: 1rem;
+      }
+
+      /* Filter tabs horizontal scroll on mobile */
+      .flex.justify-center.gap-x-2 {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 0.5rem;
+      }
+      .flex.justify-center.gap-x-2::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Floating button */
+      .fixed.bottom-5.right-4 {
+        bottom: calc(1rem + env(safe-area-inset-bottom));
+        right: 1rem;
+      }
+
+      /* Ensure no horizontal scroll */
+      body, html {
+        overflow-x: hidden;
+      }
+
+      /* Hero text scaling */
+      header h1 {
+        font-size: 2.75rem;
+      }
+      header .text-xl {
+        font-size: 1.125rem;
+      }
     }
 
     .masonry-grid {
@@ -254,15 +344,68 @@
     .price-tag {
       font-feature-settings: "tnum";
     }
+
+    /* Additional mobile UX polish */
+    @media (max-width: 767px) {
+      .luxury-card h4 {
+        font-size: 0.95rem;
+        line-height: 1.25;
+      }
+
+      /* Ensure long menu names wrap nicely on mobile */
+      #tostas-grid h4,
+      #picoteo-grid h4,
+      #tablas-grid h4 {
+        white-space: normal;
+        line-height: 1.3;
+      }
+
+      .luxury-card p {
+        font-size: 0.8125rem;
+      }
+
+      /* Better long text handling in menu items */
+      .luxury-card {
+        word-break: break-word;
+      }
+
+      /* Larger close buttons in modals/drawers */
+      .modal button, .menu-drawer button {
+        padding: 8px;
+        min-width: 44px;
+        min-height: 44px;
+      }
+
+      /* Booking form on mobile */
+      #booking-modal input,
+      #booking-modal select,
+      #booking-modal textarea {
+        padding-top: 0.875rem;
+        padding-bottom: 0.875rem;
+      }
+    }
+
+    /* Global improvements */
+    .filter-tab {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: rgba(197, 164, 110, 0.2);
+    }
+
+    .gold-button, .outline-button {
+      -webkit-tap-highlight-color: transparent;
+    }
   </style>
 </head>
-<body class="antialiased">
+<body class="antialiased pb-[env(safe-area-inset-bottom)]">
   <!-- ==================== NAVIGATION ==================== -->
   <nav id="nav" class="fixed top-0 left-0 right-0 z-50 bg-[#F8F5EF]/95 border-b border-[#C5A46E]/15 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-5 md:px-6 h-20 flex items-center justify-between">
       <!-- Logo -->
       <a href="#" class="flex items-center group" aria-label="Vermuthia - Inicio">
-        <div id="nav-logo" class="h-9"></div>
+        <div id="nav-logo" class="h-8 w-[110px] md:h-9 md:w-[130px]"></div>
       </a>
 
       <!-- Desktop Navigation -->
@@ -296,12 +439,12 @@
         <!-- Mobile language -->
         <div class="flex items-center rounded-full border border-[#C5A46E]/30 bg-white/70 p-0.5 text-[10px] tracking-widest">
           <button onclick="setLanguage('es')" id="lang-es-mobile"
-            class="px-3 py-1 rounded-full transition-all font-medium active-lang">ES</button>
+            class="px-3.5 py-1.5 rounded-full transition-all font-medium active-lang min-w-[42px]">ES</button>
           <button onclick="setLanguage('en')" id="lang-en-mobile"
-            class="px-3 py-1 rounded-full transition-all font-medium text-[#5C6B5A]">EN</button>
+            class="px-3.5 py-1.5 rounded-full transition-all font-medium text-[#5C6B5A] min-w-[42px]">EN</button>
         </div>
         
-        <button onclick="openMobileMenu()" class="p-2 text-[#1E2F23]" aria-label="Abrir menú">
+        <button onclick="openMobileMenu()" class="p-3 -mr-1 text-[#1E2F23] active:bg-black/5 rounded-full" aria-label="Abrir menú">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -322,7 +465,7 @@
     <div class="relative z-10 max-w-5xl px-6 text-center">
       <!-- Large Logo in Hero -->
       <div class="flex justify-center mb-5">
-        <div id="hero-logo" class="w-[210px] md:w-[260px]"></div>
+        <div id="hero-logo" class="w-[160px] md:w-[220px]"></div>
       </div>
 
       <h1 class="text-[#F8F5EF] text-5xl md:text-7xl tracking-tighter leading-none font-semibold mb-4 heading-serif">
@@ -413,11 +556,11 @@
       </div>
 
       <!-- Filters -->
-      <div class="flex justify-center gap-x-2 md:gap-x-3 mb-10 flex-wrap gap-y-2">
-        <button onclick="filterVermouths('todos')" class="filter-tab active px-7 py-1.5 text-sm tracking-wider" id="filter-todos" data-i18n="vermuts.filter.all">TODOS</button>
-        <button onclick="filterVermouths('rojo')" class="filter-tab px-7 py-1.5 text-sm tracking-wider" id="filter-rojo" data-i18n="vermuts.filter.red">ROJO</button>
-        <button onclick="filterVermouths('blanco')" class="filter-tab px-7 py-1.5 text-sm tracking-wider" id="filter-blanco" data-i18n="vermuts.filter.white">BLANCO</button>
-        <button onclick="filterVermouths('especial')" class="filter-tab px-7 py-1.5 text-sm tracking-wider" id="filter-especial" data-i18n="vermuts.filter.special">ESPECIALES</button>
+      <div class="flex justify-center gap-x-1 md:gap-x-3 mb-10 overflow-x-auto pb-2 -mx-1 px-1 snap-x snap-mandatory md:overflow-visible md:snap-none">
+        <button onclick="filterVermouths('todos')" class="filter-tab active px-5 py-2 text-sm tracking-wider whitespace-nowrap snap-start" id="filter-todos" data-i18n="vermuts.filter.all">TODOS</button>
+        <button onclick="filterVermouths('rojo')" class="filter-tab px-5 py-2 text-sm tracking-wider whitespace-nowrap snap-start" id="filter-rojo" data-i18n="vermuts.filter.red">ROJO</button>
+        <button onclick="filterVermouths('blanco')" class="filter-tab px-5 py-2 text-sm tracking-wider whitespace-nowrap snap-start" id="filter-blanco" data-i18n="vermuts.filter.white">BLANCO</button>
+        <button onclick="filterVermouths('especial')" class="filter-tab px-5 py-2 text-sm tracking-wider whitespace-nowrap snap-start" id="filter-especial" data-i18n="vermuts.filter.special">ESPECIALES</button>
       </div>
 
       <!-- Products Grid -->
@@ -428,18 +571,18 @@
   </section>
 
   <!-- ==================== LA CARTA ==================== -->
-  <section id="carta" class="max-w-7xl mx-auto px-6 pt-20 pb-24">
+  <section id="carta" class="max-w-7xl mx-auto px-5 md:px-6 pt-20 pb-24">
     <div class="text-center mb-14">
       <div class="uppercase text-[#C5A46E] tracking-[3px] text-xs mb-2" data-i18n="carta.eyebrow">SABORES DEL SUR</div>
       <h2 class="section-title heading-serif text-[#1E2F23]" data-i18n="carta.title">La Carta</h2>
-      <p class="text-[#5C6B5A] mt-3" data-i18n="carta.subtitle">Conservas de autor y tablas de degustación pensadas para acompañar a nuestros vermuts.</p>
+      <p class="text-[#5C6B5A] mt-3" data-i18n="carta.subtitle">CARTA RESTAURANTE — GILDAS, TOSTAS, PICOTEO Y DULCE</p>
     </div>
 
-    <!-- Tablas de Degustación -->
+    <!-- Gildas -->
     <div class="mb-16">
       <div class="flex items-baseline justify-between mb-6 px-1">
-        <h3 class="text-xl tracking-tight font-medium text-[#1E2F23]" data-i18n="carta.tablas">Tablas de Degustación</h3>
-        <div class="text-xs uppercase tracking-widest text-[#C5A46E]" data-i18n="carta.for2">para compartir</div>
+        <h3 class="text-xl tracking-tight font-medium text-[#1E2F23]">GILDAS</h3>
+        <div class="text-xs uppercase tracking-widest text-[#C5A46E]">pintxos</div>
       </div>
       
       <div id="tablas-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -447,13 +590,35 @@
       </div>
     </div>
 
-    <!-- Conservas Selectas -->
-    <div>
+    <!-- Tostas -->
+    <div class="mb-16">
       <div class="flex items-baseline justify-between mb-6 px-1">
-        <h3 class="text-xl tracking-tight font-medium text-[#1E2F23]" data-i18n="carta.conservas">Conservas Selectas</h3>
+        <h3 class="text-xl tracking-tight font-medium text-[#1E2F23]">TOSTAS</h3>
       </div>
       
-      <div id="conservas-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div id="tostas-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Picoteo -->
+    <div class="mb-16">
+      <div class="flex items-baseline justify-between mb-6 px-1">
+        <h3 class="text-xl tracking-tight font-medium text-[#1E2F23]">PICOTEO</h3>
+      </div>
+      
+      <div id="picoteo-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Dulce -->
+    <div>
+      <div class="flex items-baseline justify-between mb-6 px-1">
+        <h3 class="text-xl tracking-tight font-medium text-[#1E2F23]">DULCE</h3>
+      </div>
+      
+      <div id="dulces-grid" class="grid md:grid-cols-2 gap-5 max-w-2xl">
         <!-- Populated by JS -->
       </div>
     </div>
@@ -550,7 +715,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between gap-y-11">
         <div>
-          <div id="footer-logo" class="h-7 mb-3"></div>
+          <div id="footer-logo" class="h-6 w-[95px] mb-3"></div>
           <p class="text-sm max-w-[240px]" data-i18n="footer.tagline">Donde el arte del vermut encuentra su expresión más elevada.</p>
         </div>
 
@@ -615,7 +780,7 @@
 
   <!-- ==================== FLOATING MI RESERVA ==================== -->
   <button onclick="openReservaDrawer()"
-    class="fixed bottom-7 right-6 md:right-8 z-[60] flex items-center gap-3 pl-4 pr-5 py-3 bg-white shadow-xl border border-[#C5A46E]/30 rounded-full hover:border-[#C5A46E] transition-all group">
+    class="fixed bottom-5 right-4 md:bottom-7 md:right-6 z-[60] flex items-center gap-2.5 pl-4 pr-4 py-3 bg-white shadow-xl border border-[#C5A46E]/30 rounded-full active:scale-[0.985] hover:border-[#C5A46E] transition-all group">
     <div class="flex items-center gap-3">
       <div class="w-5 h-5 text-[#C5A46E]">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
@@ -811,18 +976,18 @@
 
   <!-- Mobile Menu Drawer -->
   <div id="mobile-menu" onclick="if (event.target.id === 'mobile-menu') closeMobileMenu()" class="hidden fixed inset-0 z-[95] bg-black/60 md:hidden">
-    <div onclick="event.stopImmediatePropagation()" class="menu-drawer absolute top-0 right-0 h-full w-4/5 max-w-xs bg-[#F8F5EF] shadow-2xl px-7 py-8 flex flex-col">
+    <div onclick="event.stopImmediatePropagation()" class="menu-drawer absolute top-0 right-0 h-full w-4/5 max-w-xs bg-[#F8F5EF] shadow-2xl px-6 py-8 pb-10 flex flex-col">
       <div class="flex justify-between mb-8">
-        <div id="mobile-logo" class="h-6"></div>
-        <button onclick="closeMobileMenu()" class="text-xl">×</button>
+        <div id="mobile-logo" class="h-5 w-[85px]"></div>
+        <button onclick="closeMobileMenu()" class="text-2xl p-1 -mr-1">×</button>
       </div>
       
-      <div class="flex flex-col gap-y-4 text-[17px]">
-        <a href="#" onclick="closeMobileMenu()" class="py-1" data-i18n="nav.inicio">Inicio</a>
-        <a href="#historia" onclick="closeMobileMenu()" class="py-1" data-i18n="nav.historia">Nuestra Historia</a>
-        <a href="#vermuts" onclick="closeMobileMenu()" class="py-1" data-i18n="nav.vermuts">Los Vermuts</a>
-        <a href="#carta" onclick="closeMobileMenu()" class="py-1" data-i18n="nav.carta">La Carta</a>
-        <a href="#experiencia" onclick="closeMobileMenu()" class="py-1" data-i18n="nav.experiencia">La Experiencia</a>
+      <div class="flex flex-col gap-y-1 text-[17px]">
+        <a href="#" onclick="closeMobileMenu()" class="py-3 px-1 -mx-1 active:bg-[#C5A46E]/10 rounded-lg" data-i18n="nav.inicio">Inicio</a>
+        <a href="#historia" onclick="closeMobileMenu()" class="py-3 px-1 -mx-1 active:bg-[#C5A46E]/10 rounded-lg" data-i18n="nav.historia">Nuestra Historia</a>
+        <a href="#vermuts" onclick="closeMobileMenu()" class="py-3 px-1 -mx-1 active:bg-[#C5A46E]/10 rounded-lg" data-i18n="nav.vermuts">Los Vermuts</a>
+        <a href="#carta" onclick="closeMobileMenu()" class="py-3 px-1 -mx-1 active:bg-[#C5A46E]/10 rounded-lg" data-i18n="nav.carta">La Carta</a>
+        <a href="#experiencia" onclick="closeMobileMenu()" class="py-3 px-1 -mx-1 active:bg-[#C5A46E]/10 rounded-lg" data-i18n="nav.experiencia">La Experiencia</a>
       </div>
       
       <div class="mt-auto">
@@ -852,7 +1017,7 @@
         full_en: "Our signature red vermouth. Made with more than 22 botanicals and briefly aged in French oak. A classic expression with the depth and elegance that defines Vermuthia.",
         pairings_es: ["Anchoas de Santoña", "Jamón ibérico", "Queso curado de oveja"],
         pairings_en: ["Santoña anchovies", "Ibérico ham", "Aged sheep cheese"],
-        image: "https://images.unsplash.com/photo-1547595628-c61a29f495f0?w=900&q=80"
+        image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80"
       },
       {
         id: "reserva-roble",
@@ -897,7 +1062,7 @@
         full_en: "Crafted with wild herbs foraged from nearby hills. A dry and perfumed white, designed to accompany seafood conserves and light appetizers.",
         pairings_es: ["Anchoas del Cantábrico", "Mejillones en escabeche", "Pimientos del piquillo"],
         pairings_en: ["Cantabrian anchovies", "Mussels in escabeche", "Piquillo peppers"],
-        image: "https://images.unsplash.com/photo-1547595628-c61a29f495f0?w=900&q=80"
+        image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80"
       },
       {
         id: "blanco-floral",
@@ -948,110 +1113,226 @@
 
     const tablas = [
       {
-        id: "tabla-clasica",
-        name_es: "Tabla Clásica Vermuthia",
-        name_en: "Vermuthia Classic Board",
-        desc_es: "Selección de cinco conservas de la casa: anchoas, aceitunas arbequinas, bonito, queso curado y jamón ibérico de bellota.",
-        desc_en: "Selection of five house conserves: anchovies, arbequina olives, bonito, aged cheese and acorn-fed ibérico ham.",
-        price: 38,
-        serves: "2 personas",
+        id: "gilda-atun",
+        name_es: "Atun rojo huevo de codorniz frito",
+        name_en: "Red Tuna with Fried Quail Egg",
+        desc_es: "Atún rojo con huevo de codorniz frito.",
+        desc_en: "Red tuna with fried quail egg.",
+        price: 8.5,
+        serves: "unidad",
+        image: "https://images.unsplash.com/photo-1559847844-5315695dadae?w=900&q=80"
+      },
+      {
+        id: "gilda-mortadela",
+        name_es: "Mortadela confitada en manteca aceite de pistacho y crema stratiaccela",
+        name_en: "Mortadella Confit in Butter with Pistachio Oil and Stracciatella Cream",
+        desc_es: "Mortadela confitada en manteca, aceite de pistacho y crema stracciatella.",
+        desc_en: "Mortadella confited in butter, pistachio oil and stracciatella cream.",
+        price: 7.5,
+        serves: "unidad",
+        image: "https://images.unsplash.com/photo-1585325701956-60dd9c8553bc?w=900&q=80"
+      },
+      {
+        id: "gilda-boqueron",
+        name_es: "Boqueron melon y jamon",
+        name_en: "Boquerón with Melon and Ham",
+        desc_es: "Boquerón, melón y jamón.",
+        desc_en: "Boquerón, melon and ham.",
+        price: 7,
+        serves: "unidad",
+        image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=900&q=80"
+      },
+      {
+        id: "gilda-clasica",
+        name_es: "Clasica",
+        name_en: "Classic",
+        desc_es: "Gilda clásica: anchoa, aceituna y piparra.",
+        desc_en: "Classic Gilda: anchovy, olive and guindilla.",
+        price: 6.5,
+        serves: "unidad",
         image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80"
       },
       {
-        id: "tabla-mar",
-        name_es: "Tabla del Mar",
-        name_en: "Table of the Sea",
-        desc_es: "Anchoas de Santoña, mejillones en escabeche, boquerones, navajas y pimientos del piquillo. El mar en su máxima expresión.",
-        desc_en: "Santoña anchovies, mussels in escabeche, boquerones, razor clams and piquillo peppers. The sea at its finest.",
-        price: 46,
-        serves: "2 personas",
-        image: "https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=900&q=80"
+        id: "gilda-pulpo",
+        name_es: "Pulpo aceituna rellena de queso al pimenton de la vera",
+        name_en: "Octopus with Paprika Cheese Stuffed Olive",
+        desc_es: "Pulpo y aceituna rellena de queso al pimentón de la vera.",
+        desc_en: "Octopus with paprika cheese stuffed olive from La Vera.",
+        price: 8,
+        serves: "unidad",
+        image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=900&q=80"
       },
       {
-        id: "tabla-montana",
-        name_es: "Tabla de la Montaña",
-        name_en: "Mountain Board",
-        desc_es: "Jamón ibérico 5J, lomo de bellota, queso de oveja viejo, membrillo artesanal y nueces tostadas. Potente y generoso.",
-        desc_en: "5J ibérico ham, acorn-fed loin, aged sheep cheese, artisanal quince paste and toasted walnuts. Powerful and generous.",
-        price: 52,
-        serves: "2 personas",
-        image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&q=80"
-      },
-      {
-        id: "tabla-vegetal",
-        name_es: "Tabla de la Huerta",
-        name_en: "Garden Board",
-        desc_es: "Selección vegetariana: aceitunas aliñadas, pimientos asados, berenjena en escabeche, tomates secos y queso fresco de cabra.",
-        desc_en: "Vegetarian selection: marinated olives, roasted peppers, pickled eggplant, sun-dried tomatoes and fresh goat cheese.",
-        price: 34,
-        serves: "2 personas",
-        image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&q=80"
+        id: "gilda-chicharron",
+        name_es: "Chicharron queso arzuaoyoa",
+        name_en: "Chicharrón with Arzúa-Ulloa Cheese",
+        desc_es: "Chicharrón y queso Arzúa-Ulloa.",
+        desc_en: "Chicharrón with Arzúa-Ulloa cheese.",
+        price: 7.5,
+        serves: "unidad",
+        image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=900&q=80"
       }
     ]
 
-    const conservas = [
+    const tostas = [
       {
-        id: "anchoas",
-        name_es: "Anchoas de Santoña en AOVE",
-        name_en: "Santoña Anchovies in EVOO",
-        desc_es: "Anchoas del Cantábrico de primavera, en aceite de oliva virgen extra. Suave, carnosa y con el punto exacto de sal.",
-        desc_en: "Spring Cantabrian anchovies in extra virgin olive oil. Tender, meaty and perfectly seasoned.",
-        origin: "Santoña, Cantabria",
-        price: 16
+        id: "tosta-picanya",
+        name_es: "Picaña curada queso de tetilla mayo trufada",
+        name_en: "Cured Picaña with Tetilla Cheese and Truffle Mayo",
+        desc_es: "Picaña curada, queso de tetilla, mayo trufada.",
+        desc_en: "Cured picaña, tetilla cheese, truffle mayo.",
+        price: 9.5,
+        image: "https://images.unsplash.com/photo-1585325701956-60dd9c8553bc?w=900&q=80"
       },
       {
-        id: "aceitunas",
-        name_es: "Aceitunas Arbequinas de Finca",
-        name_en: "Estate Arbequina Olives",
-        desc_es: "Aceitunas Arbequinas de nuestra finca, aliñadas con tomillo fresco, piel de limón y un toque de ajo.",
-        desc_en: "Arbequina olives from our estate, dressed with fresh thyme, lemon zest and a touch of garlic.",
-        origin: "Cerrado de Calderón",
-        price: 9
+        id: "tosta-cabra",
+        name_es: "Queso de cabra plancha cebolla caramelizada y mermelada tomate",
+        name_en: "Grilled Goat Cheese with Caramelized Onion and Tomato Jam",
+        desc_es: "Queso de cabra a la plancha, cebolla caramelizada y mermelada de tomate.",
+        desc_en: "Grilled goat cheese, caramelized onion and tomato jam.",
+        price: 9,
+        image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=900&q=80"
       },
       {
-        id: "bonito",
-        name_es: "Bonito del Norte en Escabeche",
-        name_en: "Northern Bonito in Escabeche",
-        desc_es: "Lomos de bonito del norte cocinados en un escabeche suave de vinagre de Jerez y especias.",
-        desc_en: "Northern bonito loins cooked in a delicate Jerez vinegar and spice escabeche.",
-        origin: "Getaria, País Vasco",
-        price: 14
+        id: "tosta-guanciale",
+        name_es: "Guanchale yema pecorino romano",
+        name_en: "Guanciale with Yolk and Pecorino Romano",
+        desc_es: "Guanciale, yema, pecorino romano.",
+        desc_en: "Guanciale, egg yolk, pecorino romano.",
+        price: 10,
+        image: "https://images.unsplash.com/photo-1559847844-5315695dadae?w=900&q=80"
       },
       {
-        id: "queso",
-        name_es: "Queso Curado de Oveja",
-        name_en: "Aged Sheep Cheese",
-        desc_es: "Queso de oveja manchega curado 18 meses. Textura firme, notas a nuez y un final largo.",
-        desc_en: "18-month Manchego-style sheep cheese. Firm texture, nutty notes and a long finish.",
-        origin: "La Mancha",
-        price: 12
+        id: "tosta-atun",
+        name_es: "Atun rojo alioli de manzana cebolla encurtida",
+        name_en: "Red Tuna with Apple Aioli and Pickled Onion",
+        desc_es: "Atún rojo, alioli de manzana, cebolla encurtida.",
+        desc_en: "Red tuna, apple aioli, pickled onion.",
+        price: 11,
+        image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=900&q=80"
+      }
+    ]
+
+    const picoteo = [
+      {
+        id: "picoteo-carabinero",
+        name_es: "Base de torta frita tartar de carabinero aliñado con su cabeza asada",
+        name_en: "Fried Torta Base with Carabinero Tartare Seasoned with Roasted Head",
+        desc_es: "Base de torta frita con tartar de carabinero aliñado con su cabeza asada.",
+        desc_en: "Fried torta base with carabinero tartare aliñado with its roasted head.",
+        price: 15,
+        image: "https://images.unsplash.com/photo-1559847844-5315695dadae?w=900&q=80"
       },
       {
-        id: "jamon",
-        name_es: "Jamón Ibérico de Bellota 5J",
-        name_en: "5J Acorn-fed Ibérico Ham",
-        desc_es: "Ración generosa de jamón ibérico de bellota. Pata negra, corte a cuchillo.",
-        desc_en: "Generous portion of acorn-fed ibérico ham. Black hoof, knife-cut.",
-        origin: "Extremadura",
-        price: 28
+        id: "picoteo-bravas",
+        name_es: "Bravas en milhojas con espuma de brava",
+        name_en: "Bravas in Millefeuille with Brava Foam",
+        desc_es: "Bravas en milhojas con espuma de brava.",
+        desc_en: "Bravas in millefeuille with brava foam.",
+        price: 9.5,
+        image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=900&q=80"
       },
       {
-        id: "boquerones",
-        name_es: "Boquerones en Vinagre",
-        name_en: "White Anchovies in Vinegar",
-        desc_es: "Boquerones frescos marinados en vinagre suave de manzana y perejil. Limpios y frescos.",
-        desc_en: "Fresh anchovies marinated in mild apple vinegar and parsley. Clean and fresh.",
-        origin: "Málaga",
-        price: 11
+        id: "picoteo-carpaccio",
+        name_es: "Carpaccio de pomelo y atun rojo",
+        name_en: "Grapefruit and Red Tuna Carpaccio",
+        desc_es: "Carpaccio de pomelo y atún rojo.",
+        desc_en: "Carpaccio of grapefruit and red tuna.",
+        price: 13,
+        image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=900&q=80"
       },
       {
-        id: "pimientos",
-        name_es: "Pimientos del Piquillo Rellenos",
-        name_en: "Stuffed Piquillo Peppers",
-        desc_es: "Pimientos del piquillo asados y rellenos de merluza y gambas. Una conserva de autor.",
-        desc_en: "Roasted piquillo peppers stuffed with hake and shrimp. An author conserve.",
-        origin: "Navarra",
-        price: 13
+        id: "picoteo-bonito",
+        name_es: "Enchilada de bonito japones",
+        name_en: "Japanese Bonito Enchilada",
+        desc_es: "Enchilada de bonito japonés.",
+        desc_en: "Enchilada of Japanese bonito.",
+        price: 12,
+        image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=900&q=80"
+      },
+      {
+        id: "picoteo-croquetas",
+        name_es: "Croquetas de lengua de wagyu",
+        name_en: "Wagyu Tongue Croquettes",
+        desc_es: "Croquetas de lengua de wagyu.",
+        desc_en: "Croquettes of wagyu tongue.",
+        price: 11,
+        image: "https://images.unsplash.com/photo-1585325701956-60dd9c8553bc?w=900&q=80"
+      },
+      {
+        id: "picoteo-pastrami",
+        name_es: "Bikini de pastrami",
+        name_en: "Pastrami Bikini",
+        desc_es: "Bikini de pastrami.",
+        desc_en: "Pastrami bikini.",
+        price: 9.5,
+        image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=900&q=80"
+      },
+      {
+        id: "picoteo-bikini-gilda",
+        name_es: "Bikini de tarta de gilda y atun canónigos y burrata",
+        name_en: "Gilda Tart and Tuna Bikini with Lamb's Lettuce and Burrata",
+        desc_es: "Bikini de tarta de gilda y atún, canónigos y burrata.",
+        desc_en: "Gilda tart and tuna bikini with canónigos and burrata.",
+        price: 11,
+        image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=900&q=80"
+      },
+      {
+        id: "picoteo-steak",
+        name_es: "Steak tartar acompañado de tostas de croasan",
+        name_en: "Steak Tartare Accompanied by Croissant Tostas",
+        desc_es: "Steak tartar acompañado de tostas de croasan.",
+        desc_en: "Steak tartare accompanied by croissant tostas.",
+        price: 14,
+        image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&q=80"
+      },
+      {
+        id: "picoteo-anguila",
+        name_es: "Crujiente de arroz anguila brasa",
+        name_en: "Crispy Rice with Grilled Eel",
+        desc_es: "Crujiente de arroz, anguila brasa.",
+        desc_en: "Crispy rice with grilled eel.",
+        price: 13.5,
+        image: "https://images.unsplash.com/photo-1559847844-5315695dadae?w=900&q=80"
+      },
+      {
+        id: "picoteo-tortilla",
+        name_es: "Tortilla en esfera parmesano y trufa rallada",
+        name_en: "Tortilla in Sphere with Parmesan and Grated Truffle",
+        desc_es: "Tortilla en esfera, parmesano y trufa rallada.",
+        desc_en: "Tortilla in sphere, parmesan and grated truffle.",
+        price: 10.5,
+        image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=900&q=80"
+      },
+      {
+        id: "picoteo-churro",
+        name_es: "Churro relleno de jamon de bellota y crema de queso payoyo",
+        name_en: "Churro Filled with Acorn-fed Ham and Payoyo Cheese Cream",
+        desc_es: "Churro relleno de jamón de bellota y crema de queso payoyo.",
+        desc_en: "Churro filled with bellota ham and Payoyo cheese cream.",
+        price: 9,
+        image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=900&q=80"
+      }
+    ]
+
+    const dulces = [
+      {
+        id: "dulce-flan",
+        name_es: "Flan muy suave de queso",
+        name_en: "Very Smooth Cheese Flan",
+        desc_es: "Flan muy suave de queso.",
+        desc_en: "Very smooth cheese flan.",
+        price: 7.5,
+        image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=900&q=80"
+      },
+      {
+        id: "dulce-melocoton",
+        name_es: "Melocoton en almibar con crema batida de mascarponew2",
+        name_en: "Peach in Syrup with Whipped Mascarpone",
+        desc_es: "Melocotón en almíbar con crema batida de mascarpone.",
+        desc_en: "Peach in syrup with whipped mascarpone cream.",
+        price: 8,
+        image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=900&q=80"
       }
     ]
 
@@ -1184,10 +1465,10 @@
         
         'carta.eyebrow': 'SABORES DEL SUR',
         'carta.title': 'La Carta',
-        'carta.subtitle': 'Conservas de autor y tablas de degustación pensadas para acompañar a nuestros vermuts.',
-        'carta.tablas': 'Tablas de Degustación',
-        'carta.for2': 'para compartir',
-        'carta.conservas': 'Conservas Selectas',
+        'carta.subtitle': 'Gildas, tostas y picoteo de autor. Una carta pensada para maridar con nuestros vermuts.',
+        'carta.tablas': 'Gildas',
+        'carta.for2': 'pintxos',
+        'carta.conservas': 'Tostas & Picoteo',
         
         'experiencia.eyebrow': 'EL LUGAR',
         'experiencia.title': 'La Experiencia Vermuthia',
@@ -1277,10 +1558,10 @@
         
         'carta.eyebrow': 'FLAVOURS OF THE SOUTH',
         'carta.title': 'The Menu',
-        'carta.subtitle': 'Author conserves and tasting boards crafted to accompany our vermouths.',
-        'carta.tablas': 'Tasting Boards',
-        'carta.for2': 'to share',
-        'carta.conservas': 'Select Conserves',
+        'carta.subtitle': 'CARTA RESTAURANTE — GILDAS, TOSTAS, PICOTEO AND DULCE',
+        'carta.tablas': 'Gildas',
+        'carta.for2': 'pintxos',
+        'carta.conservas': 'Tostas & Picoteo',
         
         'experiencia.eyebrow': 'THE PLACE',
         'experiencia.title': 'The Vermuthia Experience',
@@ -1357,11 +1638,10 @@
 
     // Render the SVG logo (highly detailed, elegant)
     function createLogoSVG(isHero = false) {
-      const size = isHero ? '260' : '148'
       const viewBox = '0 0 260 142'
       
       return `
-        <svg width="${isHero ? '260' : '148'}" height="${isHero ? '142' : '81'}" viewBox="${viewBox}" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+        <svg width="100%" height="100%" viewBox="${viewBox}" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg" preserveAspectRatio="xMidYMid meet">
           <!-- Outer decorative circle -->
           <circle cx="130" cy="69" r="51" stroke="#C5A46E" stroke-width="1.1"/>
           <circle cx="130" cy="69" r="44.5" stroke="#C5A46E" stroke-width="0.65" opacity="0.6"/>
@@ -1530,26 +1810,104 @@
       })
     }
 
-    // Render conservas
-    function renderConservas() {
-      const container = document.getElementById('conservas-grid')
+    // Render Tostas
+    function renderTostas() {
+      const container = document.getElementById('tostas-grid')
+      if (!container) return
       container.innerHTML = ''
       
-      conservas.forEach(c => {
-        const name = currentLang === 'es' ? c.name_es : c.name_en
-        const desc = currentLang === 'es' ? c.desc_es : c.desc_en
+      tostas.forEach(item => {
+        const name = currentLang === 'es' ? item.name_es : item.name_en
+        const desc = currentLang === 'es' ? item.desc_es : item.desc_en
+        const img = item.image || 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&q=80'
         
         const card = document.createElement('div')
-        card.className = `luxury-card rounded-3xl p-6 flex flex-col`
+        card.className = `luxury-card rounded-3xl p-5 flex flex-col`
         card.innerHTML = `
-          <div class="flex justify-between items-baseline">
-            <h4 class="heading-serif text-xl leading-none text-[#1E2F23]">${name}</h4>
-            <div class="text-lg text-[#C5A46E] tabular-nums font-medium shrink-0">${c.price}€</div>
+          <div class="flex gap-4 items-start">
+            <div class="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 border border-[#C5A46E]/10">
+              <img src="${img}" alt="${name}" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-baseline gap-2">
+                <h4 class="heading-serif text-lg leading-none text-[#1E2F23]">${name}</h4>
+                <div class="text-base text-[#C5A46E] tabular-nums font-medium shrink-0">${item.price}€</div>
+              </div>
+            </div>
           </div>
-          <div class="mt-1 text-xs tracking-wider text-[#C5A46E]">${c.origin}</div>
-          <p class="text-sm mt-4 text-[#5C6B5A] leading-relaxed flex-1">${desc}</p>
-          <button onclick="addConservaToReserva('${c.id}', event)" 
-            class="text-xs mt-5 self-start px-5 py-1.5 border border-[#C5A46E]/30 hover:border-[#C5A46E] rounded-full tracking-widest transition-all">
+          <p class="text-sm mt-3 text-[#5C6B5A] leading-relaxed flex-1">${desc}</p>
+          <button onclick="addTostaToReserva('${item.id}', event)" 
+            class="text-xs mt-4 self-start px-5 py-1.5 border border-[#C5A46E]/30 hover:border-[#C5A46E] rounded-full tracking-widest transition-all">
+            ${currentLang === 'es' ? 'AÑADIR A RESERVA' : 'ADD TO RESERVATION'}
+          </button>
+        `
+        container.appendChild(card)
+      })
+    }
+
+    // Render Picoteo
+    function renderPicoteo() {
+      const container = document.getElementById('picoteo-grid')
+      if (!container) return
+      container.innerHTML = ''
+      
+      picoteo.forEach(item => {
+        const name = currentLang === 'es' ? item.name_es : item.name_en
+        const desc = currentLang === 'es' ? item.desc_es : item.desc_en
+        const img = item.image || 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&q=80'
+        
+        const card = document.createElement('div')
+        card.className = `luxury-card rounded-3xl p-5 flex flex-col`
+        card.innerHTML = `
+          <div class="flex gap-4 items-start">
+            <div class="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 border border-[#C5A46E]/10">
+              <img src="${img}" alt="${name}" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-baseline gap-2">
+                <h4 class="heading-serif text-lg leading-none text-[#1E2F23]">${name}</h4>
+                <div class="text-base text-[#C5A46E] tabular-nums font-medium shrink-0">${item.price}€</div>
+              </div>
+            </div>
+          </div>
+          <p class="text-sm mt-3 text-[#5C6B5A] leading-relaxed flex-1">${desc}</p>
+          <button onclick="addPicoteoToReserva('${item.id}', event)" 
+            class="text-xs mt-4 self-start px-5 py-1.5 border border-[#C5A46E]/30 hover:border-[#C5A46E] rounded-full tracking-widest transition-all">
+            ${currentLang === 'es' ? 'AÑADIR A RESERVA' : 'ADD TO RESERVATION'}
+          </button>
+        `
+        container.appendChild(card)
+      })
+    }
+
+    // Render Dulces
+    function renderDulces() {
+      const container = document.getElementById('dulces-grid')
+      if (!container) return
+      container.innerHTML = ''
+
+      dulces.forEach(d => {
+        const name = currentLang === 'es' ? d.name_es : d.name_en
+        const desc = currentLang === 'es' ? d.desc_es : d.desc_en
+        const img = d.image || 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&q=80'
+
+        const card = document.createElement('div')
+        card.className = `luxury-card rounded-3xl p-5 flex flex-col`
+        card.innerHTML = `
+          <div class="flex gap-4 items-start">
+            <div class="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 border border-[#C5A46E]/10">
+              <img src="${img}" alt="${name}" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex justify-between items-baseline gap-2">
+                <h4 class="heading-serif text-lg leading-none text-[#1E2F23]">${name}</h4>
+                <div class="text-base text-[#C5A46E] tabular-nums font-medium shrink-0">${d.price}€</div>
+              </div>
+            </div>
+          </div>
+          <p class="text-sm mt-3 text-[#5C6B5A] leading-relaxed flex-1">${desc}</p>
+          <button onclick="addDulceToReserva('${d.id}', event)" 
+            class="text-xs mt-3 self-start px-5 py-1.5 border border-[#C5A46E]/30 hover:border-[#C5A46E] rounded-full tracking-widest transition-all">
             ${currentLang === 'es' ? 'AÑADIR A RESERVA' : 'ADD TO RESERVATION'}
           </button>
         `
@@ -1676,7 +2034,9 @@
       // Re-render dynamic sections
       renderVermouths(currentFilter)
       renderTablas()
-      renderConservas()
+      renderTostas()
+      renderPicoteo()
+      renderDulces()
       renderTestimonials()
       renderBlog()
       
@@ -1786,23 +2146,47 @@
       if (!tabla) return
       
       addToReserva({
-        type: 'tabla',
+        type: 'gilda',
         id: tabla.id,
         name: currentLang === 'es' ? tabla.name_es : tabla.name_en,
         price: tabla.price
       })
     }
     
-    function addConservaToReserva(id, e) {
+    function addDulceToReserva(id, e) {
       e.stopImmediatePropagation()
-      const c = conservas.find(x => x.id === id)
-      if (!c) return
-      
+      const d = dulces.find(x => x.id === id)
+      if (!d) return
+
       addToReserva({
-        type: 'conserva',
-        id: c.id,
-        name: currentLang === 'es' ? c.name_es : c.name_en,
-        price: c.price
+        type: 'dulce',
+        id: d.id,
+        name: currentLang === 'es' ? d.name_es : d.name_en,
+        price: d.price
+      })
+    }
+
+    function addTostaToReserva(id, e) {
+      e.stopImmediatePropagation()
+      const item = tostas.find(x => x.id === id)
+      if (!item) return
+      addToReserva({
+        type: 'tosta',
+        id: item.id,
+        name: currentLang === 'es' ? item.name_es : item.name_en,
+        price: item.price
+      })
+    }
+
+    function addPicoteoToReserva(id, e) {
+      e.stopImmediatePropagation()
+      const item = picoteo.find(x => x.id === id)
+      if (!item) return
+      addToReserva({
+        type: 'picoteo',
+        id: item.id,
+        name: currentLang === 'es' ? item.name_es : item.name_en,
+        price: item.price
       })
     }
 
@@ -1844,7 +2228,7 @@
       list.innerHTML = ''
       
       if (reservas.length === 0) {
-        list.innerHTML = `<div class="text-[#5C6B5A] text-sm py-7">${currentLang === 'es' ? 'Tu selección está vacía. Explora los vermuts y tablas.' : 'Your selection is empty. Explore our vermouths and boards.'}</div>`
+        list.innerHTML = `<div class="text-[#5C6B5A] text-sm py-7">${currentLang === 'es' ? 'Tu selección está vacía. Explora las gildas y el picoteo.' : 'Your selection is empty. Explore the gildas and small bites.'}</div>`
         return
       }
       
@@ -2162,7 +2546,9 @@
       // Render dynamic sections
       renderVermouths('todos')
       renderTablas()
-      renderConservas()
+      renderTostas()
+      renderPicoteo()
+      renderDulces()
       renderGallery()
       renderTestimonials()
       renderBlog()
